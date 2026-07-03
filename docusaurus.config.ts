@@ -1,0 +1,140 @@
+import {themes as prismThemes} from 'prism-react-renderer';
+import type {Config} from '@docusaurus/types';
+import type * as Preset from '@docusaurus/preset-classic';
+
+// This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
+
+const config: Config = {
+  title: 'NeatContext',
+  tagline: 'Official documentation',
+  favicon: 'img/logo.svg',
+
+  // Future flags, see https://docusaurus.io/docs/api/docusaurus-config#future
+  future: {
+    v4: true, // Improve compatibility with the upcoming Docusaurus v4
+  },
+
+  // --- Deployment target ---------------------------------------------------
+  // Currently served as a GitHub Pages *project* site, hence the `/neatcontext-doc/`
+  // base path. When a custom domain under neatcontext.com is added later, change:
+  //   url     -> 'https://docs.neatcontext.com'
+  //   baseUrl -> '/'
+  // and drop a `static/CNAME` file with the domain. Nothing else needs to change.
+  url: 'https://xtsoftwarelabs.github.io',
+  baseUrl: '/neatcontext-doc/',
+
+  // GitHub pages deployment config.
+  organizationName: 'XTSoftwareLabs', // GitHub org that owns the repo.
+  projectName: 'neatcontext-doc', // Repo name.
+
+  onBrokenLinks: 'throw',
+
+  // Manrope — the neatcontext.com brand typeface.
+  stylesheets: [
+    {
+      href: 'https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap',
+      type: 'text/css',
+    },
+  ],
+
+  markdown: {
+    hooks: {
+      onBrokenMarkdownLinks: 'warn',
+    },
+  },
+
+  i18n: {
+    defaultLocale: 'en',
+    locales: ['en'],
+  },
+
+  presets: [
+    [
+      'classic',
+      {
+        docs: {
+          sidebarPath: './sidebars.ts',
+          // "Edit this page" links point at this documentation repo.
+          editUrl:
+            'https://github.com/XTSoftwareLabs/neatcontext-doc/tree/main/',
+        },
+        blog: false,
+        theme: {
+          customCss: './src/css/custom.css',
+        },
+      } satisfies Preset.Options,
+    ],
+  ],
+
+  // Offline/local search — no external Algolia dependency.
+  themes: [
+    [
+      '@easyops-cn/docusaurus-search-local',
+      {
+        hashed: true,
+        indexBlog: false,
+        docsRouteBasePath: '/docs',
+      },
+    ],
+  ],
+
+  themeConfig: {
+    colorMode: {
+      respectPrefersColorScheme: true,
+    },
+    navbar: {
+      title: 'NeatContext',
+      logo: {
+        alt: 'NeatContext',
+        src: 'img/logo.svg',
+      },
+      items: [
+        {
+          type: 'docSidebar',
+          sidebarId: 'docsSidebar',
+          position: 'left',
+          label: 'Docs',
+        },
+        {
+          href: 'https://github.com/XTSoftwareLabs/neatcontext-doc',
+          label: 'GitHub',
+          position: 'right',
+        },
+      ],
+    },
+    footer: {
+      style: 'dark',
+      links: [
+        {
+          title: 'Docs',
+          items: [
+            {
+              label: 'Introduction',
+              to: '/docs/intro',
+            },
+            {
+              label: 'Getting Started',
+              to: '/docs/getting-started',
+            },
+          ],
+        },
+        {
+          title: 'More',
+          items: [
+            {
+              label: 'GitHub',
+              href: 'https://github.com/XTSoftwareLabs/neatcontext-doc',
+            },
+          ],
+        },
+      ],
+      copyright: `Copyright © ${new Date().getFullYear()} XTSoftware Labs. Built with Docusaurus.`,
+    },
+    prism: {
+      theme: prismThemes.github,
+      darkTheme: prismThemes.dracula,
+    },
+  } satisfies Preset.ThemeConfig,
+};
+
+export default config;

@@ -1,0 +1,88 @@
+/**
+ * Global styles. Infima variables are tuned to match the neatcontext.com brand:
+ * Manrope type, a cool slate-blue accent (#526f9f), and a light, minimal surface.
+ */
+
+:root {
+  /* Brand palette (from neatcontext.com) */
+  --nc-ink: #1c2430;
+  --nc-muted: #687281;
+  --nc-line: #e2e6ec;
+  --nc-paper: #ffffff;
+  --nc-cream: #f7f8fa;
+  --nc-tint: #eef3fb;
+  --nc-tint-strong: #dce7f8;
+  --nc-glow: #c5d7f26b;
+
+  /* Accent → Infima primary */
+  --ifm-color-primary: #526f9f;
+  --ifm-color-primary-dark: #4a6591;
+  --ifm-color-primary-darker: #465f89;
+  --ifm-color-primary-darkest: #394e71;
+  --ifm-color-primary-light: #6180a9;
+  --ifm-color-primary-lighter: #6f8fbe;
+  --ifm-color-primary-lightest: #8ba4cb;
+
+  /* Type */
+  --ifm-font-family-base: 'Manrope', system-ui, -apple-system, 'Segoe UI', Arial,
+    sans-serif;
+  --ifm-heading-font-family: var(--ifm-font-family-base);
+  --ifm-heading-font-weight: 600;
+  --ifm-font-color-base: var(--nc-ink);
+  --ifm-heading-color: var(--nc-ink);
+
+  /* Surfaces */
+  --ifm-background-color: var(--nc-paper);
+  --ifm-background-surface-color: var(--nc-paper);
+  --ifm-navbar-background-color: rgba(255, 255, 255, 0.85);
+  --ifm-toc-border-color: var(--nc-line);
+  --ifm-color-emphasis-300: var(--nc-line);
+
+  --ifm-code-font-size: 95%;
+  --docusaurus-highlighted-code-line-bg: rgba(82, 111, 159, 0.12);
+}
+
+/* Lighter accent for readability in dark mode. */
+[data-theme='dark'] {
+  --ifm-color-primary: #8ba4cb;
+  --ifm-color-primary-dark: #7d9bc9;
+  --ifm-color-primary-darker: #6f8fbe;
+  --ifm-color-primary-darkest: #526f9f;
+  --ifm-color-primary-light: #9bb2d7;
+  --ifm-color-primary-lighter: #a9bddd;
+  --ifm-color-primary-lightest: #c3d2e8;
+
+  --ifm-background-color: #12161d;
+  --ifm-background-surface-color: #161b24;
+  --ifm-navbar-background-color: rgba(18, 22, 29, 0.85);
+  --ifm-heading-color: #eef3fb;
+  --docusaurus-highlighted-code-line-bg: rgba(139, 164, 203, 0.16);
+}
+
+/* Tight, medium-weight headings echo the marketing site. */
+.markdown h1,
+h1 {
+  letter-spacing: -1.4px;
+  font-weight: 700;
+}
+.markdown h2,
+h2 {
+  letter-spacing: -0.8px;
+}
+
+/* Frosted, subtly bordered navbar. */
+.navbar {
+  backdrop-filter: saturate(180%) blur(10px);
+  border-bottom: 1px solid var(--nc-line);
+  box-shadow: none;
+}
+[data-theme='dark'] .navbar {
+  border-bottom-color: rgba(255, 255, 255, 0.08);
+}
+
+/* Rounded, calm buttons. */
+.button {
+  border-radius: 10px;
+  font-weight: 600;
+  letter-spacing: -0.2px;
+}

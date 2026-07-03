@@ -1,0 +1,8 @@
+{
+  "label": "Building Extensions",
+  "position": 5,
+  "link": {
+    "type": "generated-index",
+    "description": "Write connectors that give the model tools for your own systems, using the Model Context Protocol (MCP)."
+  }
+}

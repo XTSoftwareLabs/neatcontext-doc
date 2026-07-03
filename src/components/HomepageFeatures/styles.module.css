@@ -1,0 +1,55 @@
+.features {
+  display: flex;
+  align-items: center;
+  padding: 4rem 0;
+  width: 100%;
+}
+
+.card {
+  height: 100%;
+  padding: 2rem 1.75rem;
+  border: 1px solid var(--nc-line);
+  border-radius: 16px;
+  background: var(--nc-cream);
+  text-align: center;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-3px);
+  border-color: var(--ifm-color-primary-lighter);
+  box-shadow: 0 12px 30px rgba(28, 36, 48, 0.08);
+}
+
+[data-theme='dark'] .card {
+  background: var(--ifm-background-surface-color);
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+[data-theme='dark'] .card:hover {
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+}
+
+.featureEmoji {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 88px;
+  font-size: 3rem;
+  line-height: 1;
+}
+
+.cardTitle {
+  margin-bottom: 0.5rem;
+  font-size: 1.25rem;
+}
+
+.cardText {
+  margin-bottom: 0;
+  color: var(--nc-muted);
+  line-height: 1.65;
+}
+
+[data-theme='dark'] .cardText {
+  color: #9aa4b3;
+}
