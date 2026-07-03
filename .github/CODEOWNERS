@@ -1,0 +1,4 @@
+# Every file is owned by the admin. Combined with "Require review from Code
+# Owners" branch protection, this means a PR to main must be approved by the
+# admin before it can be merged.
+* @tanglearncode
