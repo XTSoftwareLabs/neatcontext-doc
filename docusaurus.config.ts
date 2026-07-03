@@ -15,13 +15,12 @@ const config: Config = {
   },
 
   // --- Deployment target ---------------------------------------------------
-  // Currently served as a GitHub Pages *project* site, hence the `/neatcontext-doc/`
-  // base path. When a custom domain under neatcontext.com is added later, change:
-  //   url     -> 'https://docs.neatcontext.com'
-  //   baseUrl -> '/'
-  // and drop a `static/CNAME` file with the domain. Nothing else needs to change.
-  url: 'https://xtsoftwarelabs.github.io',
-  baseUrl: '/neatcontext-doc/',
+  // Served on the custom domain docs.neatcontext.com (see static/CNAME). A custom
+  // domain serves at the host root, so baseUrl is '/'. To revert to the GitHub
+  // Pages project URL, set url back to 'https://xtsoftwarelabs.github.io' and
+  // baseUrl to '/neatcontext-doc/', and remove static/CNAME.
+  url: 'https://docs.neatcontext.com',
+  baseUrl: '/',
 
   // GitHub pages deployment config.
   organizationName: 'XTSoftwareLabs', // GitHub org that owns the repo.
