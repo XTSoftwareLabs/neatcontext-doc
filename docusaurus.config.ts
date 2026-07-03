@@ -52,6 +52,9 @@ const config: Config = {
       'classic',
       {
         docs: {
+          // Docs-only mode: serve the docs at the site root ("/") instead of
+          // "/docs". There is no separate marketing homepage.
+          routeBasePath: '/',
           sidebarPath: './sidebars.ts',
           // "Edit this page" links point at this documentation repo.
           editUrl:
@@ -72,7 +75,7 @@ const config: Config = {
       {
         hashed: true,
         indexBlog: false,
-        docsRouteBasePath: '/docs',
+        docsRouteBasePath: '/',
       },
     ],
   ],
@@ -89,12 +92,6 @@ const config: Config = {
       },
       items: [
         {
-          type: 'docSidebar',
-          sidebarId: 'docsSidebar',
-          position: 'left',
-          label: 'Docs',
-        },
-        {
           href: 'https://github.com/XTSoftwareLabs/neatcontext-doc',
           label: 'GitHub',
           position: 'right',
@@ -109,11 +106,11 @@ const config: Config = {
           items: [
             {
               label: 'Introduction',
-              to: '/docs/intro',
+              to: '/',
             },
             {
               label: 'Getting Started',
-              to: '/docs/getting-started',
+              to: '/getting-started',
             },
           ],
         },
