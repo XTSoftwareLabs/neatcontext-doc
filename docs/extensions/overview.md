@@ -7,8 +7,9 @@ sidebar_position: 1
 An **extension** gives the model **tools** for your systems — read an incident,
 search logs, list deployments, open a ticket, and so on. This page explains the
 extension architecture; the next pages walk through
-[building one](./building-extensions.md) and the
-[manifest reference](./manifest-reference.md).
+[building one](./building-extensions.md), adding
+[API-key](./api-key-extensions.md) or [OAuth](./oauth-extensions.md)
+authentication, and the [manifest reference](./manifest-reference.md).
 
 ## What an extension is
 
@@ -50,8 +51,20 @@ Your server must handle three JSON-RPC methods:
 | `tools/list` | Return the array of tools you expose. |
 | `tools/call` | Execute a named tool with the given arguments and return its result. |
 
-Extensions that declare a connection also receive a `neatcontext/connection`
-message; connectionless extensions can ignore it.
+Extensions that declare a connection also receive a **`neatcontext/connection`
+notification** right after `initialize`, carrying the user's credentials for that
+call (see [Connections](#connections) below); connectionless extensions can ignore
+it.
+
+:::info Your server is spawned fresh for every call
+NeatContext starts a new server process for each `tools/list` and each
+`tools/call`, and it lists tools **without** credentials. Two consequences:
+
+- **Stay stateless.** Don't cache anything in memory between calls, and never
+  write credentials to disk — they arrive over the handshake each time.
+- **`tools/list` must work unauthenticated.** Return your tool definitions even
+  when no connection has arrived.
+:::
 
 ## Tool naming: the `neatcontext_` prefix is reserved
 
@@ -64,14 +77,47 @@ model disambiguate your tools from others.
 
 ## Connections
 
-The manifest's `connection.kind` declares whether the extension needs
-authentication before its tools work:
+The manifest's `connection.kind` declares how the extension authenticates. The
+split of responsibilities is deliberate:
 
-- **`none`** — no authentication. The extension talks to systems that need no
-  credentials from NeatContext (local systems, or endpoints the extension
-  authenticates itself). Enable and go.
-- **authenticated** — for services that require NeatContext to establish a
-  connection first; the tools become available once the connection is completed.
+- **NeatContext owns credential custody** — collecting secrets from the user
+  (a form or a browser flow), encrypting them with the OS secure storage,
+  persisting them, refreshing OAuth tokens, and **injecting** them into your
+  server over the `neatcontext/connection` handshake before each tool call.
+- **Your server owns credential use** — it receives plain values and calls its
+  backend however that backend needs (headers, token exchange, signing, …).
+  Custom authentication schemes live in your server code, not in NeatContext.
+
+Each kind produces a different **Connect experience** on the Extensions page:
+
+| `connection.kind` | The user sees | Example |
+|---|---|---|
+| `none` | No connection UI at all — enable and go. | A connector for local or unauthenticated systems ([first-extension guide](./building-extensions.md)) |
+| `api_key` / `bearer` | An **inline form** on the extension card, generated from the `fields` you declare (password inputs for secrets, "(optional)" labels, placeholders). **Connect** validates required fields and stores them encrypted. | The bundled **Datadog** extension ([API-key guide](./api-key-extensions.md)) |
+| `oauth2_pkce` | A **Connect button that opens the system browser** to the provider's consent page; NeatContext catches the localhost redirect, exchanges the code, and stores/refreshes tokens automatically. | The bundled **PagerDuty** extension ([OAuth guide](./oauth-extensions.md)) |
+
+Whatever the kind, your server receives the same handshake payload shape —
+`{ kind, values, config }` — so switching or adding auth never changes your tool
+code's structure. If your backend uses something more exotic (session login,
+request signing, Kerberos), declare an `api_key` form for the raw inputs and do
+the exotic part inside your server.
+
+### When credentials are missing or rejected
+
+If the user hasn't connected, **no handshake arrives** — your tools should then
+return a *connection-required* result instead of failing:
+
+```json
+{ "error": "myservice_not_connected", "connection_required": true,
+  "provider": "myservice", "message": "Connect MyService before searching logs." }
+```
+
+NeatContext stops the tool loop, shows your `message` as the answer, and renders a
+**Connect &lt;Extension&gt;** button in the chat. Rejected credentials
+(`"error": "myservice_access_denied"`, optionally with `connection_required: true`)
+behave the same. Ordinary failures (bad query, timeout) should **not** set these
+fields — the model can then correct itself and retry. The exact contract is in the
+[manifest reference](./manifest-reference.md#terminal-results).
 
 ## Security model
 
@@ -83,9 +129,27 @@ authentication before its tools work:
 - Keep secrets out of the manifest and out of tool arguments. Read them from the
   environment or a local config the extension owns.
 
+## Reference implementations you already have
+
+NeatContext ships two first-party extensions authored through **exactly the same
+contract** you use — each is a single self-contained `server.cjs` with a manifest,
+no NeatContext internals:
+
+- **PagerDuty** — `oauth2_pkce` connection, three read-only incident tools.
+- **Datadog** — `api_key` connection (API key + application key + optional site),
+  one log-search tool.
+
+On the Extensions page, click the **folder icon** on either card to open its
+folder and read the source. They are the best starting templates.
+
 ## Next
 
 - **[Build Your First Extension](./building-extensions.md)** — a complete, annotated
-  stdio MCP connector.
+  stdio MCP connector with no authentication.
+- **[API-Key Extensions](./api-key-extensions.md)** — add a credentials form
+  (Datadog-style).
+- **[OAuth Extensions](./oauth-extensions.md)** — connect through the provider's
+  sign-in page (PagerDuty-style).
 - **[Manifest Reference](./manifest-reference.md)** — every field in
-  `neatcontext-extension.json`.
+  `neatcontext-extension.json`, the handshake payload, and the terminal-result
+  contract.

@@ -39,9 +39,13 @@ Extensions give the model tools for your real systems. To add one:
 2. Click **Add extension** and select the extension's folder — the one containing
    its `neatcontext-extension.json` manifest. NeatContext copies it into its own
    `userData/extensions/` and loads it.
-3. **Enable** the extension. If it declares `connection: none`, there is nothing to
-   authenticate. If it requires a connection, complete the connection step so its
-   tools become available.
+3. **Enable** the extension, then connect it if it needs authentication:
+   - `connection: none` — nothing to authenticate.
+   - API-key style (e.g. the bundled **Datadog** extension) — fill the inline form
+     on the card and click **Connect**; secrets are stored encrypted on your
+     machine.
+   - OAuth style (e.g. the bundled **PagerDuty** extension) — click **Connect**
+     and approve in the browser window that opens.
 
 Once enabled, the extension's tools are offered to the model during chat. You can
 try a ready-made connector by following the

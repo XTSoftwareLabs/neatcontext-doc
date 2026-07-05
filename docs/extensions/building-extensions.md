@@ -15,7 +15,9 @@ endpoint. The same skeleton scales to as many tools as you need — the
 pattern with three tools.
 
 :::info Prerequisites
-Node.js 18+. No npm dependencies are required — everything uses Node built-ins.
+Node.js 18+ for developing and testing locally. No npm dependencies are required —
+everything uses Node built-ins. (End users don't need Node at all: NeatContext
+runs `command: "node"` servers on its own bundled runtime.)
 :::
 
 ## 1. Create the folder and manifest
@@ -266,6 +268,17 @@ Because endpoints come from environment variables (`STATUS_BOARD_BASE` here), th
 same extension works against staging or production without code changes. The
 incident demo uses the same approach with `NEATCONTEXT_DEMO_*_BASE` variables so its
 one connector can target either the local mock systems or your real ones.
+
+## 7. Add authentication when you need it
+
+This connector used `connection: none`. When your system needs the **user's**
+credentials, declare a connection in the manifest and NeatContext handles the
+whole credential lifecycle (UI, encrypted storage, injection) for you:
+
+- **[API-Key Extensions](./api-key-extensions.md)** — an inline form for pasted
+  keys/tokens (how the bundled Datadog extension works).
+- **[OAuth Extensions](./oauth-extensions.md)** — browser sign-in with automatic
+  token refresh (how the bundled PagerDuty extension works).
 
 ## Next
 
