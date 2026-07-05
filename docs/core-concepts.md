@@ -73,8 +73,8 @@ directory you already use. You add and remove knowledge folders per workspace; t
 model only searches what is currently added.
 
 :::tip
-Files matched by a `.domaincopilotignore` file (same syntax as `.gitignore`) are
-excluded from a folder, e.g. `node_modules/` and `*.log`.
+Common non-content directories (e.g. `node_modules/`, `.git/`, build outputs) are
+skipped automatically when a folder is searched.
 :::
 
 ## Extensions
@@ -84,16 +84,21 @@ systems — read an incident, search logs, list deployments, and so on. Extensio
 speak the **Model Context Protocol (MCP)**: each is a small server that advertises a
 set of tools and executes them when the model calls.
 
-Extensions can declare a **connection** requirement:
+Extensions can declare a **connection** requirement, which determines how you
+connect them on the Extensions page:
 
-- `connection: none` — the extension talks to systems that need no authentication
-  from NeatContext (for example, local systems or endpoints it authenticates
+- `none` — no authentication (local systems, or endpoints the extension reaches
   itself). Nothing to configure; enable it and go.
-- authenticated connections — for services that require NeatContext to supply
-  credentials before the tools become available.
+- `api_key` / `bearer` — you paste credentials into an inline form on the
+  extension's card (the bundled **Datadog** extension works this way). Secrets are
+  encrypted with your OS secure storage and handed to the extension only when its
+  tools run.
+- `oauth2_pkce` — **Connect** opens your browser to sign in with the service (the
+  bundled **PagerDuty** extension works this way); tokens are stored encrypted and
+  refreshed automatically.
 
 See [Building Extensions](./extensions/overview.md) for the full model, including
-the manifest and protocol.
+the manifest, the protocol, and step-by-step guides for each connection type.
 
 ## Your model
 
