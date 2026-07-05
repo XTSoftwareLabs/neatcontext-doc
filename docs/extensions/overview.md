@@ -27,7 +27,7 @@ A NeatContext extension is a folder containing:
   script), plus any files it needs.
 
 You add an extension by pointing NeatContext at that folder. It copies the folder
-into its own `userData/extensions/` and loads it; enabling the extension makes its
+into its own data directory and loads it; enabling the extension makes its
 tools available to the model.
 
 ## Transport and protocol
@@ -71,9 +71,10 @@ NeatContext starts a new server process for each `tools/list` and each
 Tool names from a user (third-party) extension **must not** start with
 `neatcontext_`. That prefix is reserved for trusted, bundled first-party
 extensions; if a user extension exposes a `neatcontext_`-prefixed tool, that tool is
-filtered out. Use your own prefix instead — the demo uses `demo_` (`demo_get_incident`,
-`demo_search_logs`, `demo_list_deployments`). A short, unique prefix also helps the
-model disambiguate your tools from others.
+filtered out. Use your own prefix instead — the
+[incident demo](https://github.com/XTSoftwareLabs/neatcontext-demo) uses `demo_`
+(`demo_get_incident`, `demo_search_logs`, `demo_list_deployments`). A short, unique
+prefix also helps the model disambiguate your tools from others.
 
 ## Connections
 
@@ -126,8 +127,11 @@ fields — the model can then correct itself and retry. The exact contract is in
 - An extension can reach whatever the host machine can. Prefer **read-only** tools
   for investigative connectors, and make any write/destructive tool explicit and
   narrowly scoped.
-- Keep secrets out of the manifest and out of tool arguments. Read them from the
-  environment or a local config the extension owns.
+- Keep secrets out of the manifest, out of tool arguments, and out of the
+  extension folder. For the **user's** credentials, declare a
+  [connection](#connections) — NeatContext stores them encrypted and injects them
+  per call. Environment variables remain fine for non-secret deployment settings
+  (endpoints, ports).
 
 ## Reference implementations you already have
 

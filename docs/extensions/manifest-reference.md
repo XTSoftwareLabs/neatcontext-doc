@@ -209,9 +209,9 @@ user extensions are filtered out. Use your own short prefix (`acme_search_logs`)
 ## Packaging notes
 
 - The manifest and everything the server needs must live in the **same folder**
-  you add to NeatContext; the folder is copied as-is into its
-  `userData/extensions/`. Keep it lean — don't ship `node_modules/` (prefer Node
-  built-ins and the global `fetch`), build outputs, or logs.
+  you add to NeatContext; the folder is copied as-is into NeatContext's own data
+  directory. Keep it lean — don't ship `node_modules/` (prefer Node built-ins and
+  the global `fetch`), build outputs, or logs.
 - Keep secrets **out** of the manifest and out of the folder entirely. User
   credentials are collected by NeatContext and injected per call; anything else
   the server needs should come from `connection.config` or the environment.
