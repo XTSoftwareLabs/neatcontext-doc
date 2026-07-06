@@ -10,9 +10,10 @@ the *same* incident as two different teams and watch it correctly reach two
 *different* outcomes — one team hands the incident off, the other finds and fixes
 the root cause.
 
-It uses the open **NeatContext incident-analysis demo**, which ships three tiny
-local mock systems (incident management, logs, deployments), a connector extension,
-two team profiles, and each team's runbooks.
+It uses the open
+**[NeatContext incident-analysis demo](https://github.com/XTSoftwareLabs/neatcontext-demo)**,
+which ships three tiny local mock systems (incident management, logs,
+deployments), a connector extension, two team profiles, and each team's runbooks.
 
 :::info Why this matters
 Between the two investigations, the **only** things that change are the active

@@ -37,8 +37,8 @@ Extensions give the model tools for your real systems. To add one:
 
 1. Go to the **Extensions** page.
 2. Click **Add extension** and select the extension's folder — the one containing
-   its `neatcontext-extension.json` manifest. NeatContext copies it into its own
-   `userData/extensions/` and loads it.
+   its `neatcontext-extension.json` manifest. NeatContext copies the folder into
+   its own data directory and loads it.
 3. **Enable** the extension, then connect it if it needs authentication:
    - `connection: none` — nothing to authenticate.
    - API-key style (e.g. the bundled **Datadog** extension) — fill the inline form
@@ -113,5 +113,6 @@ profile's guardrails — citing the documents it used.
 
 - **[Core Concepts](./core-concepts.md)** — understand how the pieces combine.
 - **[Incident Analysis walkthrough](./guides/incident-analysis.md)** — see the
-  advantage end-to-end with a downloadable demo.
+  advantage end-to-end with the open
+  [incident-analysis demo](https://github.com/XTSoftwareLabs/neatcontext-demo).
 - **[Building Extensions](./extensions/overview.md)** — connect your own systems.

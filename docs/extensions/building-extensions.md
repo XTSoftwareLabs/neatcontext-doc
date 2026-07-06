@@ -11,8 +11,9 @@ manifest, the JSON-RPC framing, and the three methods every extension implements
 We'll build a connector called **Status Board** with a single tool,
 `board_get_service_status`, that returns a service's current status from an HTTP
 endpoint. The same skeleton scales to as many tools as you need — the
-[incident demo's](../guides/incident-analysis.md) `server.cjs` is this exact
-pattern with three tools.
+[incident demo's](../guides/incident-analysis.md) connector
+([source on GitHub](https://github.com/XTSoftwareLabs/neatcontext-demo)) is this
+exact pattern with three tools.
 
 :::info Prerequisites
 Node.js 18+ for developing and testing locally. No npm dependencies are required —
