@@ -82,7 +82,13 @@ const config: Config = {
 
   themeConfig: {
     colorMode: {
-      respectPrefersColorScheme: true,
+      // Always render the light ("normal") theme. Do not follow the device's
+      // system setting — a phone/OS defaulting to dark otherwise forced the
+      // docs into dark mode, where text rendered poorly. disableSwitch hides
+      // the toggle so no one can land in that broken dark theme.
+      defaultMode: 'light',
+      disableSwitch: true,
+      respectPrefersColorScheme: false,
     },
     navbar: {
       title: 'NeatContext',
