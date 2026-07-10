@@ -94,10 +94,9 @@ question, and compare the answers side by side — no swapping context in and ou
 The [Incident Analysis walkthrough](../guides/incident-analysis.md) is built
 around exactly this.
 
-:::info Basic plan limits
-On the **Basic** plan a workspace can have up to **2 chats**, each with up to
-**2 profiles** and **3 knowledge folders** attached. If your plan changes from
-Plus back to Basic, extra chats are **locked** (not deleted) — they keep their
-messages and unlock the moment you return to Plus. See
-[Account & Plans](./account-and-plans.md).
+:::info Plan limits
+The number of chats, and of profiles and knowledge folders per chat, depends on
+your plan — see [neatcontext.com/pricing](https://www.neatcontext.com/pricing).
+If your plan changes, extra chats are **locked**, not deleted: they keep their
+messages and unlock when you upgrade again. See [Account](./account.md).
 :::

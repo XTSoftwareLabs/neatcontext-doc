@@ -48,7 +48,7 @@ exactly this.
 - **[Core Concepts](./core-concepts.md)** — how profiles, knowledge, extensions,
   and models fit together.
 - **[Features](/category/features)** — every feature in depth: chats & tabs,
-  profiles, knowledge, model setup, extensions, plans, privacy.
+  profiles, knowledge, model setup, extensions.
 - **[Incident Analysis walkthrough](./guides/incident-analysis.md)** — a full,
   hands-on demonstration of the advantage.
 - **[Building Extensions](./extensions/overview.md)** — write your own connector.

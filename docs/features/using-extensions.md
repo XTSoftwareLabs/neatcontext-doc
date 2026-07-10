@@ -116,9 +116,9 @@ Details worth knowing:
   loop stops immediately and tells you — the model won't burn rounds retrying a
   call that can't succeed.
 
-:::info Basic plan limit
-The Basic plan allows up to **5 enabled extensions**. See
-[Account & Plans](./account-and-plans.md).
+:::info Plan limits
+The number of enabled extensions depends on your plan — see
+[neatcontext.com/pricing](https://www.neatcontext.com/pricing).
 :::
 
 ## Next

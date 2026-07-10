@@ -70,7 +70,7 @@ are good for humans too:
 The [incident demo's knowledge folders](https://github.com/XTSoftwareLabs/neatcontext-demo/tree/main/knowledge)
 show the pattern: `runbooks/`, `tsg/`, and `postmortems/` per team.
 
-:::info Basic plan limit
-The Basic plan allows up to **3 knowledge folders per chat**. See
-[Account & Plans](./account-and-plans.md).
+:::info Plan limits
+The number of knowledge folders per chat depends on your plan — see
+[neatcontext.com/pricing](https://www.neatcontext.com/pricing).
 :::

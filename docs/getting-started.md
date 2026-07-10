@@ -21,13 +21,10 @@ extension.
 ## Step 1 — Sign in
 
 The first time you open NeatContext you're asked to sign in or create an account
-(email + password; a verification code is emailed to you). The free **Basic**
-plan is all you need for this guide.
+(email + password; a verification code is emailed to you).
 
 Signing in identifies your subscription — your actual work (profiles, knowledge,
-chats, API keys) stays on your machine. See
-[Privacy & Data Storage](./features/privacy-and-storage.md) for the details, and
-[Account & Plans](./features/account-and-plans.md) for what Basic includes.
+chats, API keys) stays on your machine. See [Account](./features/account.md).
 
 ## Step 2 — Take stock of the window
 
