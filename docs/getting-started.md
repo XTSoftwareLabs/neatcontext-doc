@@ -4,65 +4,84 @@ sidebar_position: 2
 
 # Getting Started
 
-This guide takes you from a fresh install to your first grounded answer. It follows
-the same shape as a real workspace: connect a model, add an extension, then add a
-domain profile and a knowledge base.
+This guide takes you from a fresh install to your first grounded answer, in about
+ten minutes. It follows the same shape as a real workspace: sign in, connect a
+model, then give a chat a domain profile, a knowledge base, and (optionally) an
+extension.
 
 ## Prerequisites
 
-- **The NeatContext desktop app** — installed and able to open.
-- **Your own LLM provider** — an OpenAI-compatible or Anthropic-compatible API
-  key/endpoint, or a local model. NeatContext does **not** host a model; it
-  orchestrates yours. A **tool-calling-capable** model is required to use extension
-  tools.
+- **The NeatContext desktop app** — installed and able to open (Windows or macOS).
+- **Your own LLM access** — an API key for an OpenAI-compatible endpoint, or a
+  local model server. NeatContext does **not** host a model; it orchestrates
+  yours. Pick a **tool-calling-capable** model if you plan to use extensions.
 - **(Optional) Node.js 18+** — only if you plan to run local extensions or the
   [incident demo](./guides/incident-analysis.md).
 
-## Step 1 — Configure your model
+## Step 1 — Sign in
 
-1. Launch NeatContext.
-2. Open **model settings** and add your provider: **base URL**, **API key**, and
-   **model name**.
-3. Choose a **tool-calling-capable** model and make it the **active** model. Your
-   active model is shown in the top bar.
+The first time you open NeatContext you're asked to sign in or create an account
+(email + password; a verification code is emailed to you). The free **Basic**
+plan is all you need for this guide.
 
-:::info
-No inference happens on NeatContext's servers — requests go directly from the app
-to the provider you configured.
+Signing in identifies your subscription — your actual work (profiles, knowledge,
+chats, API keys) stays on your machine. See
+[Privacy & Data Storage](./features/privacy-and-storage.md) for the details, and
+[Account & Plans](./features/account-and-plans.md) for what Basic includes.
+
+## Step 2 — Take stock of the window
+
+![NeatContext after first launch](/img/features/first-launch.png)
+
+Four areas matter:
+
+- **Tab strip (top edge)** — one tab per chat. Each tab carries its own context.
+- **Sidebar (left)** — this tab's **Domain Profiles** and **Knowledge Base**.
+  Both are empty on a fresh install; filling them is Steps 4 and 5.
+- **Top bar** — the model button (currently a placeholder), **Extensions**, and
+  your account.
+- **Composer (bottom)** — where you'll type. *Enter* sends, *Shift+Enter* makes
+  a new line.
+
+## Step 3 — Connect your model
+
+1. Click the **model button** at the left of the top bar.
+2. Fill in the form — for most providers that's three values:
+
+   | Field | Example |
+   |---|---|
+   | Provider | OpenAI-compatible endpoint |
+   | Base URL | `https://api.openai.com/v1` |
+   | Model | `gpt-5.4-mini` |
+   | API key | `sk-…` |
+
+3. Click **Save**, then **Back**. The top bar now shows your model name.
+
+![The Model Provider settings page](/img/features/model-provider.png)
+
+Your key is encrypted with your OS's secure storage and requests go directly
+from your machine to this endpoint — no middleman. Local servers (Ollama, LM
+Studio, vLLM…) work through their OpenAI-compatible URLs; see
+[Model Provider](./features/model-provider.md) for specifics.
+
+## Step 4 — Add a domain profile
+
+A [domain profile](./features/domain-profiles.md) tells the model how your team
+thinks: what it owns, what to check first, what never to touch.
+
+:::note This step is required
+A chat needs an **active domain profile** before you can send a message — context
+is the whole point, so NeatContext won't run without at least a minimal one.
 :::
 
-## Step 2 — Add an extension (optional but recommended)
+1. In the sidebar under **Domain Profiles**, click **New** (starter template,
+   opens the editor) — or **Import** if you already have a profile `.md` file.
+2. Fill in at least three sections: **what you own**, **first checks**, and
+   **dangerous actions**. Save.
+3. Back in the chat, the profile shows *"Active in this chat"* and its name
+   appears in the top bar.
 
-Extensions give the model tools for your real systems. To add one:
-
-1. Go to the **Extensions** page.
-2. Click **Add extension** and select the extension's folder — the one containing
-   its `neatcontext-extension.json` manifest. NeatContext copies the folder into
-   its own data directory and loads it.
-3. **Enable** the extension, then connect it if it needs authentication:
-   - `connection: none` — nothing to authenticate.
-   - API-key style (e.g. the bundled **Datadog** extension) — fill the inline form
-     on the card and click **Connect**; secrets are stored encrypted on your
-     machine.
-   - OAuth style (e.g. the bundled **PagerDuty** extension) — click **Connect**
-     and approve in the browser window that opens.
-
-Once enabled, the extension's tools are offered to the model during chat. You can
-try a ready-made connector by following the
-[Incident Analysis walkthrough](./guides/incident-analysis.md), or write your own
-with the [extension guide](./extensions/overview.md).
-
-## Step 3 — Add a domain profile
-
-A [domain profile](./core-concepts.md#domain-profiles) steers the model toward your
-team's correct behavior.
-
-1. In the **Domain Profiles** panel, click **Import local Markdown profile** and
-   choose your profile `.md` file.
-2. Mark it **active**.
-
-If you don't have a profile yet, start from this minimal template and save it as
-`my-team.md`:
+No profile yet? Start from this minimal template:
 
 ```markdown
 ---
@@ -79,40 +98,60 @@ owner: My Team
 
 ## First checks during an incident
 1. (the first thing your team looks at)
-2. …
 
 ## Dangerous actions (do NOT do without approval)
-- (irreversible or high-blast-radius actions to avoid)
+- (irreversible or high-blast-radius actions)
 
 ## Response style
 - Separate facts from hypotheses, and cite the runbook you relied on.
 ```
 
-## Step 4 — Add a knowledge base
+## Step 5 — Add a knowledge base
 
-Add a folder of your team's Markdown docs (runbooks, TSGs, postmortems) as a
-**local knowledge folder**. NeatContext searches it to ground answers in your
-material. You can add more than one folder, and remove folders you don't want the
-model to search.
+Under **Knowledge Base**, click the add-folder button and pick a folder of your
+team's docs — runbooks, TSGs, postmortems. NeatContext searches it **in place**
+(nothing is copied or uploaded) and cites the documents it uses as clickable
+sources under each answer. Details in
+[Knowledge Bases](./features/knowledge-bases.md).
 
-## Step 5 — Ask your first question
+![A chat with a profile and knowledge folder attached](/img/features/workspace-context.png)
 
-Open a new chat and ask something your profile and knowledge base can answer. For an
-operational workspace, that might be:
+## Step 6 — Add an extension (optional but recommended)
 
-```
+Extensions give the model tools for your real systems — read an incident, search
+logs, list deployments. Open **Extensions** in the top bar:
+
+- The bundled **PagerDuty** and **Datadog** connectors are ready to
+  [connect](./features/using-extensions.md#connect-an-extension).
+- **Add** installs an extension from a folder; **Create** builds a read-only
+  connector for any JSON HTTP API without writing code.
+
+![The Extensions page](/img/features/extensions-page.png)
+
+The [incident demo](./guides/incident-analysis.md) ships a complete extension
+plus three mock systems for it to talk to — the fastest way to see tools in
+action without touching production.
+
+## Step 7 — Ask your first question
+
+Type a question your profile and knowledge can answer. For an operational
+workspace:
+
+```text
 Please analyze this incident: <link or ID>.
 What should we check first, and what's the safe action?
 ```
 
-With a tool-calling model and an enabled extension, the model will **call tools** to
-gather first-hand evidence, **search your knowledge base**, and answer within your
-profile's guardrails — citing the documents it used.
+Watch the response: **activity steps** show each tool call as it happens, the
+answer **streams** in, and **source chips** underneath link to the exact
+documents used. Click a source to verify the answer against your own runbook.
 
-## Next steps
+## Where to go next
 
-- **[Core Concepts](./core-concepts.md)** — understand how the pieces combine.
-- **[Incident Analysis walkthrough](./guides/incident-analysis.md)** — see the
-  advantage end-to-end with the open
-  [incident-analysis demo](https://github.com/XTSoftwareLabs/neatcontext-demo).
-- **[Building Extensions](./extensions/overview.md)** — connect your own systems.
+- **[Core Concepts](./core-concepts.md)** — how the pieces combine, in five
+  minutes.
+- **[Incident Analysis walkthrough](./guides/incident-analysis.md)** — the
+  centerpiece demo: one incident, two teams, two correct answers.
+- **[Features](/category/features)** — every feature in depth.
+- **[Building Extensions](./extensions/overview.md)** — connect your own
+  systems.

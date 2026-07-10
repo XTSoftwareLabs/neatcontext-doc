@@ -5,8 +5,12 @@ sidebar_position: 1
 # Extensions Overview
 
 An **extension** gives the model **tools** for your systems — read an incident,
-search logs, list deployments, open a ticket, and so on. This page explains the
-extension architecture; the next pages walk through
+search logs, list deployments, open a ticket, and so on. This section is for
+**building** extensions; for installing, connecting, and managing them as a user
+— including the no-code **Create extension** builder — see
+[Using Extensions](../features/using-extensions.md).
+
+This page explains the extension architecture; the next pages walk through
 [building one](./building-extensions.md), adding
 [API-key](./api-key-extensions.md) or [OAuth](./oauth-extensions.md)
 authentication, and the [manifest reference](./manifest-reference.md).
@@ -96,6 +100,12 @@ Each kind produces a different **Connect experience** on the Extensions page:
 | `none` | No connection UI at all — enable and go. | A connector for local or unauthenticated systems ([first-extension guide](./building-extensions.md)) |
 | `api_key` / `bearer` | An **inline form** on the extension card, generated from the `fields` you declare (password inputs for secrets, "(optional)" labels, placeholders). **Connect** validates required fields and stores them encrypted. | The bundled **Datadog** extension ([API-key guide](./api-key-extensions.md)) |
 | `oauth2_pkce` | A **Connect button that opens the system browser** to the provider's consent page; NeatContext catches the localhost redirect, exchanges the code, and stores/refreshes tokens automatically. | The bundled **PagerDuty** extension ([OAuth guide](./oauth-extensions.md)) |
+
+What the user sees for the two authenticated kinds:
+
+![The Datadog card: an api_key connection renders an inline form from your manifest fields](/img/features/extension-datadog-card.png)
+
+![The PagerDuty card: an oauth2_pkce connection renders a Connect button that opens the browser](/img/features/extension-pagerduty-card.png)
 
 Whatever the kind, your server receives the same handshake payload shape —
 `{ kind, values, config }` — so switching or adding auth never changes your tool

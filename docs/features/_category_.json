@@ -1,0 +1,8 @@
+{
+  "label": "Features",
+  "position": 4,
+  "link": {
+    "type": "generated-index",
+    "description": "A detailed guide to every part of NeatContext — chats and tabs, domain profiles, knowledge bases, model providers, extensions, and your account."
+  }
+}
