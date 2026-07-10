@@ -51,8 +51,8 @@ knowledge snippets), sends it to your model, and **streams** the answer live. Al
 the way you'll see:
 
 - **Activity steps** above the answer — what the assistant is doing right now:
-  reasoning steps and each **tool call** it makes (for example
-  `demo_get_incident` or `local_knowledge_search`), so tool use is never invisible.
+  reasoning steps and each **tool call** it makes (fetching an incident,
+  searching your knowledge base, …), so tool use is never invisible.
 - **Sources** under the answer — when the response drew on your knowledge base,
   the documents it used appear as **clickable chips**. Click one to open the cited
   file at the cited lines. This is how you verify an answer instead of trusting it.
@@ -94,10 +94,7 @@ question, and compare the answers side by side — no swapping context in and ou
 The [Incident Analysis walkthrough](../guides/incident-analysis.md) is built
 around exactly this.
 
-:::info Basic plan limits
-On the **Basic** plan a workspace can have up to **2 chats**, each with up to
-**2 profiles** and **3 knowledge folders** attached. If your plan changes from
-Plus back to Basic, extra chats are **locked** (not deleted) — they keep their
-messages and unlock the moment you return to Plus. See
-[Account & Plans](./account-and-plans.md).
+:::info Plan limits
+The number of chats, and of profiles and knowledge folders per chat, depends on
+your plan — see [neatcontext.com/pricing](https://www.neatcontext.com/pricing).
 :::

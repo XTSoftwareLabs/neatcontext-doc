@@ -103,7 +103,7 @@ are complete, realistic examples worth copying.
 
 ## Where profiles live
 
-Profiles created with **New** are stored under NeatContext's data folder
-(`profiles/`). Imported profiles remain at their original path. Either kind is a
+Profiles created with **New** are stored by NeatContext for you; imported
+profiles remain at their original path (shown in the editor). Either kind is a
 plain Markdown file you can open, diff, and version like any other text file —
 there is no lock-in format.

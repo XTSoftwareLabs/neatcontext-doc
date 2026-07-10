@@ -20,7 +20,7 @@ name, e.g. `gpt-5.4-mini`). That opens the **Model Provider** page:
 
 | Field | What to enter |
 |---|---|
-| **Provider** | Keep **OpenAI-compatible endpoint** — the fully supported provider type today. It covers OpenAI itself and the many services and local runtimes that expose the same API (Azure OpenAI, OpenRouter, Together, vLLM, LM Studio, Ollama, …). The other options are placeholders for upcoming native support. |
+| **Provider** | Keep **OpenAI-compatible endpoint** — the recommended choice. It covers OpenAI itself and the many services and local runtimes that expose the same API (Azure OpenAI, OpenRouter, Together, vLLM, LM Studio, Ollama, …). |
 | **Base URL** | The API root, e.g. `https://api.openai.com/v1`. For a local Ollama server use `http://localhost:11434/v1`. |
 | **Model** | The model name as your provider spells it, e.g. `gpt-5.4-mini`. |
 | **API key** | Your key. For local servers that don't check keys, enter any non-empty placeholder — the field must not be blank for live calls. |
@@ -37,33 +37,13 @@ and knowledge search, but the model cannot query your systems.
 ## How your key is stored
 
 The API key is encrypted with your **operating system's secure storage**
-(Electron `safeStorage`) and saved locally on your machine. It is never written
-in plaintext, never committed to profile files, and never sent anywhere except
-to the provider endpoint you configured.
+and saved locally on your machine. It is never written in plaintext, never
+committed to profile files, and never sent anywhere except to the provider
+endpoint you configured.
 
 ## What happens without a provider
 
-If no usable provider is configured (or the provider errors), NeatContext falls
-back to a **grounded mock response**: it still runs retrieval and shows you the
-profile and knowledge snippets it *would* have sent. That makes it easy to check
-your context assembly — what the model would see — before you spend tokens on it.
-
-## Timeouts
-
-Model requests time out after **30 seconds** by default. For slow local models
-you can raise this by setting the `NEATCONTEXT_MODEL_REQUEST_TIMEOUT_MS`
-environment variable (in milliseconds) before launching NeatContext.
-
-## How a request is assembled
-
-For every message, NeatContext builds the request from the current tab's context:
-
-1. The **active domain profile** becomes steering context in the system prompt.
-2. A **knowledge search** over the tab's folders adds the best-matching snippets.
-3. Enabled **extensions' tools** (plus the built-in local tools) are offered to
-   the model, which may call them for up to a few rounds before answering.
-4. The answer **streams** back, with tool activity and source citations shown in
-   the chat.
-
-Change the profile or the folders and you change how the model reasons — the
-provider configuration stays the same.
+If no provider is configured (or it fails), chats still work: NeatContext
+replies with a placeholder answer that shows the profile and knowledge context
+it gathered for your question. It's a handy way to preview your setup — but for
+real answers, configure a provider.

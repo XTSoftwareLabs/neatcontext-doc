@@ -5,8 +5,7 @@ sidebar_position: 5
 # Using Extensions
 
 **Extensions** give the model **tools**: read an incident, search logs, list
-deployments, look up a service. Each extension is a small connector (a
-[Model Context Protocol](https://modelcontextprotocol.io) server) that runs
+deployments, look up a service. Each extension is a small connector that runs
 locally as part of NeatContext. This page is about *using* extensions; to write
 your own, see [Building Extensions](../extensions/overview.md).
 
@@ -27,10 +26,9 @@ They are also reference implementations: click the **folder icon** on either
 card to open its source.
 
 Independent of extensions, a set of **built-in local tools** is always available
-to the model: search the tab's knowledge folders (`local_knowledge_search`), read
-a file from an attached folder (`read_local_file`), and list/read your domain
-profiles. These are read-only and sandboxed to the folders and profiles you
-attached.
+to the model: searching the tab's knowledge folders, reading files from them, and
+reading your domain profiles. These are read-only and limited to the folders and
+profiles you attached.
 
 ## Add an extension
 
@@ -58,8 +56,8 @@ readable file). Prefer read-only connectors.
 Extensions that talk to a real service declare how they authenticate, and the
 card adapts:
 
-- **No connection** (`none`) — nothing to configure. Local or unauthenticated
-  systems; enable and go.
+- **No connection** — nothing to configure. Local or unauthenticated systems;
+  enable and go.
 - **API keys** — the card shows an **inline form** for the keys the extension
   declared. Fill it and click **Connect**:
 
@@ -93,32 +91,19 @@ connector for any JSON HTTP API — no code required:
 4. **Review** — check the result, then **Generate extension**.
 
 The generated extension is installed like any other: it appears on the Extensions
-page, its folder is openable (the output is exactly the manifest + server layout
-a hand-written extension uses — a nice starting point to grow from), and secrets
-go through the normal encrypted connection flow, never into the generated files.
+page, its folder is openable (and a nice starting point to grow from if you later
+want to hand-edit it), and secrets go through the normal encrypted connection
+flow, never into the generated files.
 
-## How tools reach the model
+## Extensions in chat
 
-Every enabled extension's tools are offered to the model in every chat, alongside
-the built-in tools. When the model calls one, you see it as an **activity step**
-in the response. Results feed back to the model for up to a few rounds before it
-answers.
+Every enabled extension's tools are available to the model in every chat. When
+the model uses one, you see it as an **activity step** in the response — tool
+use is never invisible.
 
-Details worth knowing:
-
-- **Tool names starting with `neatcontext_` are reserved** for the bundled
-  first-party extensions and built-ins. If a third-party extension tries to use
-  that prefix, those tools are filtered out — a spoofing guard.
-- An extension can be restricted to specific profiles (`allowed_profiles` in its
-  manifest); its tools are then only offered when one of those profiles is
-  active.
-- If an extension reports *"connection required"* or *"access denied"*, the tool
-  loop stops immediately and tells you — the model won't burn rounds retrying a
-  call that can't succeed.
-
-:::info Basic plan limit
-The Basic plan allows up to **5 enabled extensions**. See
-[Account & Plans](./account-and-plans.md).
+:::info Plan limits
+The number of enabled extensions depends on your plan — see
+[neatcontext.com/pricing](https://www.neatcontext.com/pricing).
 :::
 
 ## Next

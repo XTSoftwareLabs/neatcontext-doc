@@ -21,13 +21,10 @@ extension.
 ## Step 1 — Sign in
 
 The first time you open NeatContext you're asked to sign in or create an account
-(email + password; a verification code is emailed to you). The free **Basic**
-plan is all you need for this guide.
+(email + password; a verification code is emailed to you).
 
 Signing in identifies your subscription — your actual work (profiles, knowledge,
-chats, API keys) stays on your machine. See
-[Privacy & Data Storage](./features/privacy-and-storage.md) for the details, and
-[Account & Plans](./features/account-and-plans.md) for what Basic includes.
+chats, API keys) stays on your machine. See [Account](./features/account.md).
 
 ## Step 2 — Take stock of the window
 
@@ -38,7 +35,7 @@ Four areas matter:
 - **Tab strip (top edge)** — one tab per chat. Each tab carries its own context.
 - **Sidebar (left)** — this tab's **Domain Profiles** and **Knowledge Base**.
   Both are empty on a fresh install; filling them is Steps 4 and 5.
-- **Top bar** — the model button (currently a placeholder), **Extensions**, and
+- **Top bar** — the model button (not configured yet), **Extensions**, and
   your account.
 - **Composer (bottom)** — where you'll type. *Enter* sends, *Shift+Enter* makes
   a new line.

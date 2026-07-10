@@ -71,9 +71,9 @@ Profiles are plain Markdown you own and version however you like.
 
 A **knowledge base** is a local folder of documents — typically a team's
 **runbooks**, **troubleshooting guides (TSGs)**, and **postmortems**. NeatContext
-searches attached folders (in place, locally, keyword-based — no cloud index) to
-ground answers in your material, and cites the documents it used as **clickable
-sources** under the answer.
+searches attached folders — in place, locally on your machine — to ground answers
+in your material, and cites the documents it used as **clickable sources** under
+the answer.
 
 Because a knowledge base is just a folder on disk, you keep it in whatever repo
 you already use. Non-content directories (`.git`, `node_modules`, build outputs)
@@ -83,14 +83,13 @@ are skipped automatically.
 ## Extensions
 
 An **extension** is a connector that gives the model **tools** for your real
-systems — read an incident, search logs, list deployments. Extensions speak the
-**Model Context Protocol (MCP)**: each is a small local server that advertises
-tools and executes them when the model calls.
+systems — read an incident, search logs, list deployments. Each one runs locally
+as part of NeatContext, and the model's tool use is always visible in the chat.
 
 Extensions declare how they authenticate, which determines the Connect
-experience: `none` (enable and go), an inline **API-key form** (the bundled
+experience: nothing to configure, an inline **API-key form** (the bundled
 Datadog), or **OAuth in your browser** (the bundled PagerDuty). Credentials are
-encrypted with your OS secure storage and injected only when tools run.
+encrypted with your OS secure storage and stay on your machine.
 → Using them: [Using Extensions](./features/using-extensions.md) ·
 Building them: [Building Extensions](./extensions/overview.md)
 

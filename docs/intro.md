@@ -30,7 +30,7 @@ NeatContext lets you assemble that context deliberately, from four building bloc
 - **[Knowledge bases](./features/knowledge-bases.md)** — local folders of runbooks,
   TSGs, and postmortems the model searches for grounded, citable answers.
 - **[Extensions](./features/using-extensions.md)** — connectors that give the model
-  tools for your real systems, over the Model Context Protocol (MCP).
+  tools for your real systems.
 - **[Your model](./features/model-provider.md)** — any tool-calling-capable LLM
   you configure.
 
@@ -48,7 +48,7 @@ exactly this.
 - **[Core Concepts](./core-concepts.md)** — how profiles, knowledge, extensions,
   and models fit together.
 - **[Features](/category/features)** — every feature in depth: chats & tabs,
-  profiles, knowledge, model setup, extensions, plans, privacy.
+  profiles, knowledge, model setup, extensions.
 - **[Incident Analysis walkthrough](./guides/incident-analysis.md)** — a full,
   hands-on demonstration of the advantage.
 - **[Building Extensions](./extensions/overview.md)** — write your own connector.
