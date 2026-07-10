@@ -10,9 +10,11 @@ Welcome to the **NeatContext** documentation.
 NeatContext is a **local-first desktop application** for building the context you
 feed to LLM-based tools. Your domain profiles, knowledge folders, model
 configuration, and tool connections live on your own machine. NeatContext does not
-host a model of its own — it **orchestrates the model you bring** (an
-OpenAI-compatible or Anthropic-compatible endpoint, or a local model), grounding it
-in the knowledge and tools you give it.
+host a model of its own — it **orchestrates the model you bring** (any
+OpenAI-compatible endpoint, cloud or local), grounding it in the knowledge and
+tools you give it.
+
+![A NeatContext investigation: tool calls, a grounded answer, clickable sources](/img/demo/06-payments-answer.png)
 
 ## Why NeatContext
 
@@ -23,25 +25,30 @@ environment.
 
 NeatContext lets you assemble that context deliberately, from four building blocks:
 
-- **Domain profiles** — a Markdown description of a team or domain: what it owns,
-  how it investigates, and its guardrails.
-- **Knowledge bases** — local folders of Markdown (runbooks, TSGs, postmortems)
-  the model searches for grounded, citable answers.
-- **Extensions** — connectors that give the model read/write tools for your real
-  systems, over the Model Context Protocol (MCP).
-- **Your model** — any tool-calling-capable LLM you configure.
+- **[Domain profiles](./features/domain-profiles.md)** — a Markdown description of
+  a team or domain: what it owns, how it investigates, and its guardrails.
+- **[Knowledge bases](./features/knowledge-bases.md)** — local folders of runbooks,
+  TSGs, and postmortems the model searches for grounded, citable answers.
+- **[Extensions](./features/using-extensions.md)** — connectors that give the model
+  tools for your real systems, over the Model Context Protocol (MCP).
+- **[Your model](./features/model-provider.md)** — any tool-calling-capable LLM
+  you configure.
 
-The payoff is concrete: give two different teams their own profile and knowledge
-for the **same** incident, and each correctly arrives at its **own** right action.
-The [Incident Analysis walkthrough](./guides/incident-analysis.md) demonstrates
+Each **chat tab** carries its own profile and knowledge, so different teams'
+contexts live side by side. The payoff is concrete: give two teams their own tab
+for the **same** incident, and each correctly arrives at its **own** right
+action — one hands off, the other fixes the root cause. The
+[Incident Analysis walkthrough](./guides/incident-analysis.md) demonstrates
 exactly this.
 
 ## Where to go next
 
-- **[Getting Started](./getting-started.md)** — install NeatContext, connect your
-  model, and build your first workspace.
+- **[Getting Started](./getting-started.md)** — from install to your first
+  grounded answer in ten minutes.
 - **[Core Concepts](./core-concepts.md)** — how profiles, knowledge, extensions,
   and models fit together.
+- **[Features](/category/features)** — every feature in depth: chats & tabs,
+  profiles, knowledge, model setup, extensions, plans, privacy.
 - **[Incident Analysis walkthrough](./guides/incident-analysis.md)** — a full,
   hands-on demonstration of the advantage.
 - **[Building Extensions](./extensions/overview.md)** — write your own connector.
