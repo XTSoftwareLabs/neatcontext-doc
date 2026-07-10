@@ -35,7 +35,7 @@ Four areas matter:
 - **Tab strip (top edge)** — one tab per chat. Each tab carries its own context.
 - **Sidebar (left)** — this tab's **Domain Profiles** and **Knowledge Base**.
   Both are empty on a fresh install; filling them is Steps 4 and 5.
-- **Top bar** — the model button (currently a placeholder), **Extensions**, and
+- **Top bar** — the model button (not configured yet), **Extensions**, and
   your account.
 - **Composer (bottom)** — where you'll type. *Enter* sends, *Shift+Enter* makes
   a new line.

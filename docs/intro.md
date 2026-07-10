@@ -30,7 +30,7 @@ NeatContext lets you assemble that context deliberately, from four building bloc
 - **[Knowledge bases](./features/knowledge-bases.md)** — local folders of runbooks,
   TSGs, and postmortems the model searches for grounded, citable answers.
 - **[Extensions](./features/using-extensions.md)** — connectors that give the model
-  tools for your real systems, over the Model Context Protocol (MCP).
+  tools for your real systems.
 - **[Your model](./features/model-provider.md)** — any tool-calling-capable LLM
   you configure.
 

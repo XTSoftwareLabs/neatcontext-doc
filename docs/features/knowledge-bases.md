@@ -30,40 +30,29 @@ Some useful properties:
 - Click a folder's name to see its full path; double-click to reveal it in your
   file explorer.
 
-## How search works
+## How it shows up in answers
 
-Retrieval is deliberately simple and fully local:
+When your question touches something in an attached folder, the relevant
+documents inform the answer, and the ones that were used appear as **clickable
+sources** under the response — click one to open the file at the relevant lines.
+Searches run **locally on your machine**.
 
-- Files are chunked into small line-based sections and scored by **keyword
-  match** against your question. There are no embeddings and no cloud index —
-  nothing leaves your machine at retrieval time.
-- The best-matching snippets are added to the model's context, and the model can
-  run further searches itself mid-answer through the built-in
-  `local_knowledge_search` tool (you'll see those as activity steps).
-- Answers that used your documents cite them as **clickable sources** under the
-  response — click one to open the file at the cited lines.
+Text-based documents work best — Markdown, plain text, logs, JSON, CSV, HTML.
+Common non-content directories (like `.git`, `node_modules`, and build outputs)
+are skipped automatically, but folders work best when they're focused
+documentation folders rather than an entire home directory.
 
-### What gets searched
+## Tips for a good knowledge base
 
-- File types: `.md`, `.markdown`, `.txt`, `.log`, `.json`, `.csv`, `.html`, `.htm`.
-- Skipped automatically: `.git`, `node_modules`, `target`, `dist`, `release`,
-  `coverage`, and — deliberately — directories named `secrets` or `credentials`.
-- Very large files (over 512 KB) are skipped, and a single search examines up to
-  400 files, so point NeatContext at focused documentation folders rather than an
-  entire home directory.
-
-## Writing knowledge that retrieves well
-
-Because matching is keyword-based, the documents that work best are the ones that
-are good for humans too:
+The documents that work best for NeatContext are the ones that are good for
+humans too:
 
 - **Use the real names of things** — service names, error strings, config keys.
   A runbook that quotes the exact error
-  (`could not obtain connection from pool 'billing-postgres'`) is findable the
-  moment that error appears in an incident.
+  (`could not obtain connection from pool 'billing-postgres'`) is easy to find
+  the moment that error appears in an incident.
 - **One topic per file**, with a descriptive filename (`checkout-api-5xx.md`
-  beats `notes3.md`) — filenames and paths count toward matching, and they are
-  what you'll see in the source chips.
+  beats `notes3.md`) — the filename is also what you'll see in the source chips.
 - **Keep postmortems.** They encode "we've seen this before", which is often the
   fastest route to a diagnosis.
 

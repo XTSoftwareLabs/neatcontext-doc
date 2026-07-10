@@ -25,10 +25,6 @@ Some workspace limits depend on your plan. For current plans and pricing, see
 **[neatcontext.com/pricing](https://www.neatcontext.com/pricing)** — upgrading
 and managing your subscription is done right from the Account page.
 
-If your plan changes, nothing is deleted: anything beyond your new plan's limits
-is locked or detached, not removed, and comes back when you upgrade again. A
-notice lists exactly what was affected.
-
 ## Signing out
 
 **Sign out** is at the bottom of the Account page. Signing out returns you to the

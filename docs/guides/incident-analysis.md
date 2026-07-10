@@ -98,8 +98,8 @@ own tab, with its own profile and knowledge base:
 2. Click **Add** and select the demo's **`extension/`** folder (the one containing
    `neatcontext-extension.json`). NeatContext copies it into its own data
    directory and loads **Ops Demo Systems**.
-3. Make sure it's **enabled**. It declares `connection: none`, so there is nothing
-   to authenticate — it talks straight to the local mock systems.
+3. Make sure it's **enabled**. There is nothing to authenticate — it talks
+   straight to the local mock systems.
 
 It exposes three read-only tools to the model:
 
