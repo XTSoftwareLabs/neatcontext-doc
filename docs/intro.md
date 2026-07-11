@@ -7,6 +7,11 @@ slug: /
 
 Welcome to the **NeatContext** documentation.
 
+:::tip Quick hands-on demo
+Don't want to read the docs first? Clone the demo repo and try NeatContext right
+away: **[github.com/XTSoftwareLabs/neatcontext-demo](https://github.com/XTSoftwareLabs/neatcontext-demo)**.
+:::
+
 NeatContext is a **local-first desktop application** for building the context you
 feed to LLM-based tools. Your domain profiles, knowledge folders, model
 configuration, and tool connections live on your own machine. NeatContext does not
