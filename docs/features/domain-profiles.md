@@ -24,7 +24,7 @@ The **Domain Profiles** section in the sidebar has two buttons:
 Either way, the profile attaches to the **current chat tab** and appears in the
 sidebar list.
 
-:::tip Profiles are per-tab
+:::tip[Profiles are per-tab]
 Importing a profile attaches it to the tab you're on. Other tabs are untouched —
 that's what lets one tab be "Payments" and another "Infra". The **✕** next to a
 profile detaches it from the current tab only; the file on disk is unaffected.

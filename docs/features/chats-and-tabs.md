@@ -25,7 +25,7 @@ tabs and you switch the entire working context, not just the conversation histor
   *"Message NeatContext"* box at the bottom. Press **Enter** to send
   (**Shift+Enter** for a new line).
 
-:::note A chat needs a profile
+:::note[A chat needs a profile]
 Sending a message requires the tab to have an **active domain profile** — context
 is the point, so NeatContext won't run without at least a minimal one. See
 [Domain Profiles](./domain-profiles.md).
@@ -94,7 +94,7 @@ question, and compare the answers side by side — no swapping context in and ou
 The [Incident Analysis walkthrough](../guides/incident-analysis.md) is built
 around exactly this.
 
-:::info Plan limits
+:::info[Plan limits]
 The number of chats, and of profiles and knowledge folders per chat, depends on
 your plan — see [neatcontext.com/pricing](https://www.neatcontext.com/pricing).
 :::

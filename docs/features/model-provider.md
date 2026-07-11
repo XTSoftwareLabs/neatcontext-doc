@@ -28,7 +28,7 @@ name, e.g. `gpt-5.4-mini`). That opens the **Model Provider** page:
 Click **Save**. The top bar now shows your model name, and every chat in the
 workspace uses this provider.
 
-:::caution Pick a tool-calling model
+:::caution[Pick a tool-calling model]
 Extensions only work if the active model supports **function/tool calling** (all
 mainstream chat models do). With a non-tool-calling model you still get profiles
 and knowledge search, but the model cannot query your systems.

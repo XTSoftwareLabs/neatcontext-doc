@@ -60,7 +60,7 @@ notification** right after `initialize`, carrying the user's credentials for tha
 call (see [Connections](#connections) below); connectionless extensions can ignore
 it.
 
-:::info Your server is spawned fresh for every call
+:::info[Your server is spawned fresh for every call]
 NeatContext starts a new server process for each `tools/list` and each
 `tools/call`, and it lists tools **without** credentials. Two consequences:
 

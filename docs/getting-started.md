@@ -66,7 +66,7 @@ Studio, vLLM…) work through their OpenAI-compatible URLs; see
 A [domain profile](./features/domain-profiles.md) tells the model how your team
 thinks: what it owns, what to check first, what never to touch.
 
-:::note This step is required
+:::note[This step is required]
 A chat needs an **active domain profile** before you can send a message — context
 is the whole point, so NeatContext won't run without at least a minimal one.
 :::

@@ -16,7 +16,7 @@ which ships three tiny local mock systems (incident management, logs,
 deployments), a connector extension, two team profiles, and each team's runbooks.
 Everything runs on your machine; nothing touches real infrastructure.
 
-:::info Why this matters
+:::info[Why this matters]
 Between the two investigations, the **only** things that change are the profile
 and the knowledge folder each tab carries. The incident, the tools, and the raw
 evidence are identical — yet each team arrives at its own correct action. That is
@@ -76,7 +76,7 @@ check: open `https://localhost:7801/incidents/INC-1001` in a browser (accept the
 self-signed-cert warning) — you should get the incident JSON. The extension needs
 no such acceptance; it is configured to trust the demo cert.
 
-:::tip Port already in use?
+:::tip[Port already in use?]
 Override with env vars, e.g.
 `INCIDENT_PORT=8801 LOG_PORT=8802 DEPLOY_PORT=8803 node servers/index.js`, then point
 the extension at them with the matching `NEATCONTEXT_DEMO_*_BASE` variables (see the
