@@ -75,8 +75,15 @@ Payments Engineering owns the customer-facing payment path: `checkout-api`,
 
 ## First Checks During an Incident
 1. Read the incident and its timeline.
-2. Did *we* deploy near the start time? Check recent deployments.
-3. Is the payment provider healthy?
+2. Did *we* deploy near the start time? Call the **deployments** extension's
+   `list_recent_deploys` tool for our services and compare timestamps.
+3. Still unclear? Call the **status** extension's `provider_health` tool to
+   confirm the payment provider is healthy *before* blaming our code.
+4. Pull the relevant runbook from the knowledge base and cite it.
+
+## Tool Usage
+- Use `list_recent_deploys` **only** for the services under *Services We Own*.
+- Do not call `restart_service` at all — restarts require a human (see below).
 
 ## Dangerous Actions (do NOT do without approval)
 - Do not restart invoice-worker during the 09:00–10:00Z settlement window.
@@ -88,18 +95,27 @@ Payments Engineering owns the customer-facing payment path: `checkout-api`,
 ```
 
 The `owner` and `criticality` fields are shown in the top bar next to the active
-profile. Beyond that, the structure is yours — but the profiles that work best are
-explicit about three things:
+profile. Beyond that, the structure is yours — but **the more concrete your domain
+knowledge, the more accurately the model behaves.** Vague guidance produces vague,
+improvised answers; specific, spelled-out knowledge produces repeatable, correct
+ones. The profiles that work best are explicit about four things:
 
 1. **Ownership** — what is (and is not) this team's. This is what lets the model
    correctly say *"not ours — hand off"* instead of guessing at a fix.
 2. **Investigation order** — the team's first checks, in order. The model will
    actually follow them.
-3. **Guardrails** — dangerous actions, stated as prohibitions. The model repeats
+3. **Tool usage** — which tools to call, in which situations, and in what order.
+   Don't just list the tools available; tie each one to a trigger and a step, e.g.
+   *"when a deploy is suspected, call `list_recent_deploys` for our services
+   first, then compare timestamps."* Also state when **not** to call a tool. The
+   more precisely you script this, the more reliably the model calls the right
+   tool at the right moment instead of improvising.
+4. **Guardrails** — dangerous actions, stated as prohibitions. The model repeats
    these as warnings at exactly the right moments.
 
 The [incident demo's two profiles](https://github.com/XTSoftwareLabs/neatcontext-demo/tree/main/profiles)
-are complete, realistic examples worth copying.
+are complete, realistic examples — including how they wire specific tools into the
+investigation steps — and are worth copying as a starting point.
 
 ## Where profiles live
 
