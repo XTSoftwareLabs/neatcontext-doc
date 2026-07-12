@@ -25,7 +25,7 @@ manifest:
 Your server never sees the flow — it just receives a currently-valid access
 token per call.
 
-:::info Prerequisites
+:::info[Prerequisites]
 Read [Build Your First Extension](./building-extensions.md) first — this guide
 reuses its folder layout, framing, and dispatch, and only shows what changes for
 OAuth.
@@ -52,7 +52,7 @@ Before writing the manifest you need an OAuth client from the service:
 3. Note the **client id**, the **authorize URL**, the **token URL**, and the
    **scopes** you need. Request the narrowest (read-only) scopes that work.
 
-:::tip Refresh tokens
+:::tip[Refresh tokens]
 If the provider makes refresh tokens optional (an "offline access" scope or app
 setting), enable them. Without a refresh token, the user must reconnect whenever
 the access token expires — NeatContext will say so in the extension's status.

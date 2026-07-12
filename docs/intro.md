@@ -7,7 +7,7 @@ slug: /
 
 Welcome to the **NeatContext** documentation.
 
-:::tip Quick hands-on demo
+:::tip[Quick hands-on demo]
 Don't want to read the docs first? Clone the demo repo and try NeatContext right
 away: **[github.com/XTSoftwareLabs/neatcontext-demo](https://github.com/XTSoftwareLabs/neatcontext-demo)**.
 :::

@@ -15,7 +15,7 @@ endpoint. The same skeleton scales to as many tools as you need — the
 ([source on GitHub](https://github.com/XTSoftwareLabs/neatcontext-demo)) is this
 exact pattern with three tools.
 
-:::info Prerequisites
+:::info[Prerequisites]
 Node.js 18+ for developing and testing locally. No npm dependencies are required —
 everything uses Node built-ins. (End users don't need Node at all: NeatContext
 runs `command: "node"` servers on its own bundled runtime.)

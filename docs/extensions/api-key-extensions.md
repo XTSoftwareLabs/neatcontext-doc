@@ -20,7 +20,7 @@ What you get by declaring an `api_key` connection:
 - Before every tool call, the decrypted values are **injected into your server**
   over the `neatcontext/connection` handshake.
 
-:::info Prerequisites
+:::info[Prerequisites]
 Read [Build Your First Extension](./building-extensions.md) first — this guide
 reuses its folder layout, JSON-RPC framing, and method dispatch, and only shows
 what changes for authentication.
@@ -217,7 +217,7 @@ async function searchLogs(args) {
 }
 ```
 
-:::warning Never persist or print secrets
+:::warning[Never persist or print secrets]
 Credentials arrive per call and must stay in memory. Don't write them to disk,
 don't include them in tool results, and redact them from anything you append to
 `diagnosticLogPath`.

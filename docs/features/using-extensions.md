@@ -44,7 +44,7 @@ Each card shows the extension's name, description, version, its **tools** (hover
 one for its description), and the controls: **Enable/Disable**, **open folder**,
 and — for extensions you added — **remove**.
 
-:::caution Extensions are code you run
+:::caution[Extensions are code you run]
 An extension runs on your machine with your user's permissions. Treat a
 third-party extension like any code you download: review it before adding
 (click the folder icon and read the server — good extensions are a single
@@ -101,7 +101,7 @@ Every enabled extension's tools are available to the model in every chat. When
 the model uses one, you see it as an **activity step** in the response — tool
 use is never invisible.
 
-:::info Plan limits
+:::info[Plan limits]
 The number of enabled extensions depends on your plan — see
 [neatcontext.com/pricing](https://www.neatcontext.com/pricing).
 :::
