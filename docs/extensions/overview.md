@@ -149,9 +149,11 @@ NeatContext ships two first-party extensions authored through **exactly the same
 contract** you use — each is a single self-contained `server.cjs` with a manifest,
 no NeatContext internals:
 
-- **PagerDuty** — `oauth2_pkce` connection, three read-only incident tools.
+- **PagerDuty** — `oauth2_pkce` connection, three read-only incident tools
+  (usage guide: [Using the PagerDuty Extension](../guides/pagerduty-extension.md)).
 - **Datadog** — `api_key` connection (API key + application key + optional site),
-  one log-search tool.
+  one log-search tool
+  (usage guide: [Using the Datadog Extension](../guides/datadog-extension.md)).
 
 On the Extensions page, click the **folder icon** on either card to open its
 folder and read the source. They are the best starting templates.
