@@ -19,8 +19,11 @@ Two first-party connectors come **bundled** (marked *Built-in*; they can be
 disabled but not removed):
 
 - **PagerDuty** — read-only incident tools (incident details, related incidents,
-  past incidents), connected with OAuth.
+  past incidents), connected with OAuth. Step-by-step guide:
+  [Using the PagerDuty Extension](../guides/pagerduty-extension.md).
 - **Datadog** — read-only log search, connected with your Datadog API keys.
+  Step-by-step guide:
+  [Using the Datadog Extension](../guides/datadog-extension.md).
 
 They are also reference implementations: click the **folder icon** on either
 card to open its source.
