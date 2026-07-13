@@ -15,8 +15,11 @@ extension.
 - **Your own LLM access** — an API key for an OpenAI-compatible endpoint, or a
   local model server. NeatContext does **not** host a model; it orchestrates
   yours. Pick a **tool-calling-capable** model if you plan to use extensions.
-- **(Optional) Node.js 18+** — only if you plan to run local extensions or the
-  [incident demo](./guides/incident-analysis.md).
+- **(Optional) Node.js 18+** — only if you plan to run the
+  [incident demo](./guides/incident-analysis.md)'s mock systems or
+  [develop your own extensions](./extensions/building-extensions.md). Just
+  *using* extensions needs no Node install — NeatContext runs them on its own
+  bundled runtime.
 
 ## Step 1 — Sign in
 
