@@ -6,14 +6,26 @@ sidebar_position: 1
 
 An **extension** gives the model **tools** for your systems — read an incident,
 search logs, list deployments, open a ticket, and so on. This section is for
-**building** extensions; for installing, connecting, and managing them as a user
-— including the no-code **Create extension** builder — see
-[Using Extensions](../features/using-extensions.md).
+**creating** extensions; for installing, connecting, and managing them as a
+user, see [Using Extensions](../features/using-extensions.md).
 
-This page explains the extension architecture; the next pages walk through
-[building one](./building-extensions.md), adding
-[API-key](./api-key-extensions.md) or [OAuth](./oauth-extensions.md)
-authentication, and the [manifest reference](./manifest-reference.md).
+## Two ways to create an extension
+
+1. **The UI builder (no code)** — the **Create** button on the Extensions page
+   generates a working, read-only connector for any JSON HTTP API in four
+   guided steps. Start here for straightforward "call this endpoint" tools:
+   [Create an Extension in the UI](./create-extension-ui.md).
+2. **Write it yourself (code)** — a single Node script speaking MCP over
+   stdio gives you full control: multiple tools, custom logic, non-HTTP
+   backends, exotic auth. Start with
+   [Build Your First Extension](./building-extensions.md).
+
+Both produce the same thing — an extension folder with a manifest and an MCP
+server — so you can begin in the builder and hand-edit the generated code
+later. The rest of this page explains the architecture behind both; the next
+pages cover [API-key](./api-key-extensions.md) and
+[OAuth](./oauth-extensions.md) authentication and the
+[manifest reference](./manifest-reference.md).
 
 ## What an extension is
 
@@ -160,6 +172,8 @@ folder and read the source. They are the best starting templates.
 
 ## Next
 
+- **[Create an Extension in the UI](./create-extension-ui.md)** — the four-step
+  no-code builder, field by field.
 - **[Build Your First Extension](./building-extensions.md)** — a complete, annotated
   stdio MCP connector with no authentication.
 - **[API-Key Extensions](./api-key-extensions.md)** — add a credentials form
