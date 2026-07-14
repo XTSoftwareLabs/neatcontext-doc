@@ -1,5 +1,5 @@
 ---
-sidebar_position: 2
+sidebar_position: 3
 ---
 
 # Build Your First Extension
@@ -7,6 +7,14 @@ sidebar_position: 2
 This guide builds a complete NeatContext extension from scratch: a stdio MCP server
 in Node.js (built-ins only) that exposes one tool. By the end you'll understand the
 manifest, the JSON-RPC framing, and the three methods every extension implements.
+
+:::tip[No code needed for simple HTTP connectors]
+This is the **write-it-yourself** path — full control, any logic. If your tool
+is "call one JSON HTTP endpoint," the in-app builder generates the whole
+extension in four steps: see
+[Create an Extension in the UI](./create-extension-ui.md). You can start there
+and hand-edit the generated code afterwards.
+:::
 
 We'll build a connector called **Status Board** with a single tool,
 `board_get_service_status`, that returns a service's current status from an HTTP

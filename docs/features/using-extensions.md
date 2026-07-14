@@ -80,23 +80,30 @@ If you ask a question that needs a not-yet-connected extension, the answer will
 say so and offer a **Connect** button right in the chat — you don't have to
 remember to set things up in advance.
 
-## Create an extension without writing code
+## Create your own extension
 
-The **Create** button opens a guided builder that generates a working, read-only
-connector for any JSON HTTP API — no code required:
+There are **two ways** to create an extension:
 
-![The 4-step extension builder](/img/features/extension-builder.png)
+1. **The Create builder (no code)** — the **Create** button opens a guided,
+   four-step builder that generates a working, read-only connector for any
+   JSON HTTP API:
 
-1. **Basics** — name the connector and give the API's base URL.
-2. **Auth** — none, an API-key header, or OAuth.
-3. **Data** — define the endpoint path (e.g. `/api/services/{serviceName}`) and
-   the tool's input.
-4. **Review** — check the result, then **Generate extension**.
+   ![The 4-step extension builder](/img/features/extension-builder.png)
 
-The generated extension is installed like any other: it appears on the Extensions
-page, its folder is openable (and a nice starting point to grow from if you later
-want to hand-edit it), and secrets go through the normal encrypted connection
-flow, never into the generated files.
+   **Basics** (name + base URL) → **Auth** (none, API-key header, or OAuth) →
+   **Data** (endpoint path + tool input) → **Review** → **Generate extension**.
+   Every field has a **?** next to its label with a detailed explanation and
+   examples. For a full field-by-field walkthrough with a real API, see
+   [Create an Extension in the UI](../extensions/create-extension-ui.md).
+
+2. **Write one yourself (code)** — a single Node script speaking MCP gives you
+   multiple tools and custom logic. See
+   [Building Extensions](../extensions/overview.md).
+
+Either way the result installs like any other extension: it appears on the
+Extensions page, its folder is openable (a generated one is a nice starting
+point if you later want to hand-edit it), and secrets go through the normal
+encrypted connection flow, never into the generated files.
 
 ## Extensions in chat
 
