@@ -166,8 +166,8 @@ async function searchLogs(args) {
   if (!query) throw new Error('Tool argument "query" is required.');
 
   // 1. Not connected: no handshake arrived. Return a connection-required
-  //    result — NeatContext stops the tool loop, answers the user with your
-  //    message, and offers a "Connect Acme Logs" button in the chat.
+  //    result — the loop stops and the connected AI client relays your
+  //    message as a "connect Acme Logs first" prompt.
   if (!connection || !connection.apiKey) {
     return {
       error: "acme_logs_not_connected",
@@ -225,14 +225,16 @@ don't include them in tool results, and redact them from anything you append to
 
 ## 5. Test it
 
-1. **Extensions → Add extension**, select your `acme-logs/` folder, **Enable** it.
+1. **Extensions → Add extension**, select your `acme-logs/` folder, **Enable** it,
+   and select it into a Context.
 2. Click **Connect** with the form empty → the inline "API key is required."
    error appears and nothing is saved.
-3. Ask the model something that triggers your tool *before connecting* → the
-   answer should be your `message` with a **Connect Acme Logs** button.
+3. Connect your AI client and ask something that triggers your tool *before
+   connecting the extension* → the answer should relay your `message` telling you
+   to connect Acme Logs first.
 4. Fill the form, **Connect**, ask again → the tool should call your backend with
    the key.
-5. Enter a wrong key, ask again → the access-denied message and Connect button.
+5. Enter a wrong key, ask again → the access-denied message appears.
 
 ## Field cheat sheet
 

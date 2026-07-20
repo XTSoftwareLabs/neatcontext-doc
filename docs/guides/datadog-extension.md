@@ -5,19 +5,19 @@ sidebar_position: 3
 # Using the Datadog Extension
 
 NeatContext ships a **built-in Datadog connector** with one read-only tool:
-**log search**. The model can pull matching log events — timestamp, status,
-service, host, message, tags — while investigating an incident, using the same
-query syntax you'd type into the Datadog Log Explorer. It connects with your
+**log search**. Your connected AI client can pull matching log events — timestamp,
+status, service, host, message, tags — while investigating an incident, using the
+same query syntax you'd type into the Datadog Log Explorer. It connects with your
 **Datadog API and application keys**, and it can only *read* logs: it never
 writes anything to your Datadog account.
 
 This guide walks through getting the keys, connecting, and searching logs from
-chat, step by step.
+your AI client, step by step.
 
 ## Prerequisites
 
-- **NeatContext** installed, with a **tool-calling-capable** model configured
-  and active (see [Getting Started](../getting-started.md)).
+- **NeatContext** installed, and a **supported AI client** installed and signed in
+  (see [Getting Started](../getting-started.md)). NeatContext brings no model.
 - A **Datadog account** with logs in it, and permission to create an
   application key.
 
@@ -45,9 +45,9 @@ open Datadog at:
 
 ## Step 2 — Connect on the Extensions page
 
-Open the **Extensions** page from the top bar. Datadog ships bundled, so its
-card is already there, marked *Built-in* — nothing to add or install. Make sure
-it is **enabled**, then fill the inline form:
+Open the **Extensions** page. Datadog ships bundled, so its card is already there,
+marked *Built-in* — nothing to add or install. Make sure it is **enabled** (and
+select it into the Context you'll connect), then fill the inline form:
 
 ![The Datadog card with its inline API-key form](/img/features/extension-datadog-card.png)
 
@@ -107,16 +107,15 @@ Each returned event carries its **timestamp, status, service, host, message**
 spot the pattern and pivot the investigation.
 
 As always in NeatContext, the log evidence lands inside *your* context: the
-**domain profile** and the tab's **knowledge folders** (runbooks, TSGs,
-postmortems) shape what the model checks first and which actions it recommends.
+Context's **domain profile** and its **knowledge folders** (runbooks, TSGs,
+postmortems) shape what the AI checks first and which actions it recommends.
 The [Incident Analysis walkthrough](./incident-analysis.md) shows that
 combination end-to-end.
 
 ## Troubleshooting
 
-- **The answer says Datadog isn't connected**, with a **Connect Datadog**
-  button in the chat — you asked before connecting. Click the button (or use
-  the Extensions page) and ask again.
+- **The answer says Datadog isn't connected** — you asked before connecting.
+  Connect Datadog on the Extensions page, then ask again.
 - **"Datadog denied access (status 401/403)"** — the keys were rejected. In
   order of likelihood: the **site** doesn't match your organization (see the
   caution above), the **application key** lacks the `logs_read_data`

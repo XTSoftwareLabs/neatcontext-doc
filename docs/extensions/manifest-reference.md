@@ -196,7 +196,7 @@ model retry:
 
 | Result shape | Effect |
 |---|---|
-| `{ "connection_required": true, "provider": "<id>", "message": "…" }` (plus your own `error` code) | Loop stops; `message` becomes the answer; a **Connect &lt;Extension&gt;** button is offered in the chat. Use when credentials are missing or rejected. |
+| `{ "connection_required": true, "provider": "<id>", "message": "…" }` (plus your own `error` code) | Loop stops; the connected AI client relays `message` as a "connect it first" prompt instead of guessing. Use when credentials are missing or rejected. |
 | `{ "error": "<provider>_access_denied", "provider": "<id>", "message": "…", "diagnostic_log": "…" }` | Loop stops with the message (and the log path, if given). Use for permission failures while connected. |
 | `{ "error": "…", "message": "…" }` without those markers | **Not** terminal — the model sees the error and may correct itself (fix a query, choose another tool). Use for ordinary failures. |
 

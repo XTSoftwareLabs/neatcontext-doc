@@ -12,48 +12,59 @@ Don't want to read the docs first? Clone the demo repo and try NeatContext right
 away: **[github.com/XTSoftwareLabs/neatcontext-demo](https://github.com/XTSoftwareLabs/neatcontext-demo)**.
 :::
 
-NeatContext is a **local-first desktop application** for building the context you
-feed to LLM-based tools. Your domain profiles, knowledge folders, model
-configuration, and tool connections live on your own machine. NeatContext does not
-host a model of its own — it **orchestrates the model you bring** (any
-OpenAI-compatible endpoint, cloud or local), grounding it in the knowledge and
-tools you give it.
+NeatContext is a **local-first desktop application** that organizes your team's
+context and hands it to the AI client you **already work in** — Claude Code,
+Claude Desktop, Codex CLI, or ChatGPT Desktop. Your domain profiles, knowledge
+folders, and tool connections live on your own machine.
 
-![A NeatContext investigation: tool calls, a grounded answer, clickable sources](/img/demo/06-payments-answer.png)
+NeatContext **runs no model of its own**. It hosts no chat, stores no model API
+key, and produces no answer. Instead, it serves your selected context to your
+AI client over a local [MCP](https://modelcontextprotocol.io) connection; that
+client reads your files, searches your folders, calls your tools, and writes the
+answer with **its own** model.
 
 ## Why NeatContext
 
-A general-purpose LLM answers from general knowledge. That is rarely enough for
+A general-purpose AI answers from general knowledge. That is rarely enough for
 real operational work, where the *right* answer depends on **your team's context**:
 what you own, which runbooks apply, and which actions are dangerous in your
 environment.
 
-NeatContext lets you assemble that context deliberately, from four building blocks:
+NeatContext lets you assemble that context deliberately, from three building
+blocks, and serve it to your AI:
 
 - **[Domain profiles](./features/domain-profiles.md)** — a Markdown description of
   a team or domain: what it owns, how it investigates, and its guardrails.
 - **[Knowledge bases](./features/knowledge-bases.md)** — local folders of runbooks,
-  TSGs, and postmortems the model searches for grounded, citable answers.
-- **[Extensions](./features/using-extensions.md)** — connectors that give the model
-  tools for your real systems.
-- **[Your model](./features/model-provider.md)** — any tool-calling-capable LLM
-  you configure.
+  TSGs, and postmortems your AI searches for grounded, citable answers.
+- **[Extensions](./features/using-extensions.md)** — read-only connectors that give
+  your AI tools for your real systems (incidents, logs, deployments).
 
-Each **chat tab** carries its own profile and knowledge, so different teams'
-contexts live side by side. The payoff is concrete: give two teams their own tab
-for the **same** incident, and each correctly arrives at its **own** right
-action — one hands off, the other fixes the root cause. The
+You group those into a **[Context](./features/contexts.md)** — a named workspace
+for one operational scope — then **[connect an AI client](./features/connect-ai-clients.md)**
+to it. The payoff is concrete: give two teams their own Context for the **same**
+incident, and each correctly arrives at its **own** right action — one hands off,
+the other fixes the root cause. The
 [Incident Analysis walkthrough](./guides/incident-analysis.md) demonstrates
 exactly this.
+
+## What NeatContext is *not*
+
+- It is **not** a chat app — you keep working in your existing AI client.
+- It does **not** host or resell a model, and it never asks for a model API key.
+- It does **not** send your files or incident data to a NeatContext server.
+
+Your AI client brings its own model; NeatContext brings the private context that
+model needs.
 
 ## Where to go next
 
 - **[Getting Started](./getting-started.md)** — from install to your first
-  grounded answer in ten minutes.
-- **[Core Concepts](./core-concepts.md)** — how profiles, knowledge, extensions,
-  and models fit together.
-- **[Features](/category/features)** — every feature in depth: chats & tabs,
-  profiles, knowledge, model setup, extensions.
+  grounded answer in your AI client, in about ten minutes.
+- **[Core Concepts](./core-concepts.md)** — how Contexts, profiles, knowledge,
+  extensions, and AI clients fit together.
+- **[Features](/category/features)** — every feature in depth: Contexts, the
+  Library, profiles, knowledge, AI-client connections, extensions, and activity.
 - **[Incident Analysis walkthrough](./guides/incident-analysis.md)** — a full,
   hands-on demonstration of the advantage.
 - **[Building Extensions](./extensions/overview.md)** — write your own connector.

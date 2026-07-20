@@ -4,22 +4,27 @@ sidebar_position: 2
 
 # Getting Started
 
-This guide takes you from a fresh install to your first grounded answer, in about
-ten minutes. It follows the same shape as a real workspace: sign in, connect a
-model, then give a chat a domain profile, a knowledge base, and (optionally) an
-extension.
+This guide takes you from a fresh install to your first grounded answer — asked
+in your own AI client — in about ten minutes. The shape of a real setup is:
+sign in, add a domain profile and a knowledge folder to your **Library**, select
+them into a **Context**, then **connect** the AI client you already use.
 
 ## Prerequisites
 
 - **The NeatContext desktop app** — installed and able to open (Windows or macOS).
-- **Your own LLM access** — an API key for an OpenAI-compatible endpoint, or a
-  local model server. NeatContext does **not** host a model; it orchestrates
-  yours. Pick a **tool-calling-capable** model if you plan to use extensions.
+- **A supported AI client, installed and signed in** — one of:
+  - **[Claude Code](./features/connect-ai-clients.md#claude-code)** (CLI)
+  - **[Claude Desktop](./features/connect-ai-clients.md#claude-desktop)** (uses its built-in Claude Code)
+  - **[Codex CLI](./features/connect-ai-clients.md#codex-cli)**
+  - **[ChatGPT Desktop](./features/connect-ai-clients.md#chatgpt-desktop)** (uses its built-in Codex)
+
+  NeatContext brings **no model** — your AI client brings its own. There is no
+  API key to enter in NeatContext.
 - **(Optional) Node.js 18+** — only if you plan to run the
   [incident demo](./guides/incident-analysis.md)'s mock systems or
   [develop your own extensions](./extensions/building-extensions.md). Just
-  *using* extensions needs no Node install — NeatContext runs them on its own
-  bundled runtime.
+  *using* the bundled extensions needs no Node install — NeatContext runs them on
+  its own bundled runtime.
 
 ## Step 1 — Sign in
 
@@ -27,59 +32,34 @@ The first time you open NeatContext you're asked to sign in or create an account
 (email + password; a verification code is emailed to you).
 
 Signing in identifies your subscription — your actual work (profiles, knowledge,
-chats, API keys) stays on your machine. See [Account](./features/account.md).
+Contexts) stays on your machine. See [Account](./features/account.md).
 
 ## Step 2 — Take stock of the window
 
-![NeatContext after first launch](/img/features/first-launch.png)
+NeatContext opens on the **Contexts** page. The main areas, reachable from the
+navigation, are:
 
-Four areas matter:
+- **Contexts** — your context workspaces, one per tab. Each Context selects its
+  own profiles, knowledge folders, and extensions, and has a **Connect this
+  context** panel with a card per AI client.
+- **Library** — your reusable domain profiles, knowledge folders, and extensions.
+  This is where you *author and link* resources; Contexts just *select* them.
+- **Extensions** — install, connect, and manage read-only tool connectors.
+- **Context Activity** — a per-Context log of what connected AI clients did.
+- **Account** — your sign-in and subscription.
 
-- **Tab strip (top edge)** — one tab per chat. Each tab carries its own context.
-- **Sidebar (left)** — this tab's **Domain Profiles** and **Knowledge Base**.
-  Both are empty on a fresh install; filling them is Steps 4 and 5.
-- **Top bar** — the model button (not configured yet), **Extensions**, and
-  your account.
-- **Composer (bottom)** — where you'll type. *Enter* sends, *Shift+Enter* makes
-  a new line.
+## Step 3 — Add a domain profile to your Library
 
-## Step 3 — Connect your model
-
-1. Click the **model button** at the left of the top bar.
-2. Fill in the form — for most providers that's three values:
-
-   | Field | Example |
-   |---|---|
-   | Provider | OpenAI-compatible endpoint |
-   | Base URL | `https://api.openai.com/v1` |
-   | Model | `gpt-5.4-mini` |
-   | API key | `sk-…` |
-
-3. Click **Save**, then **Back**. The top bar now shows your model name.
-
-![The Model Provider settings page](/img/features/model-provider.png)
-
-Your key is encrypted with your OS's secure storage and requests go directly
-from your machine to this endpoint — no middleman. Local servers (Ollama, LM
-Studio, vLLM…) work through their OpenAI-compatible URLs; see
-[Model Provider](./features/model-provider.md) for specifics.
-
-## Step 4 — Add a domain profile
-
-A [domain profile](./features/domain-profiles.md) tells the model how your team
+A [domain profile](./features/domain-profiles.md) tells your AI how your team
 thinks: what it owns, what to check first, what never to touch.
 
-:::note[This step is required]
-A chat needs an **active domain profile** before you can send a message — context
-is the whole point, so NeatContext won't run without at least a minimal one.
-:::
-
-1. In the sidebar under **Domain Profiles**, click **New** (starter template,
-   opens the editor) — or **Import** if you already have a profile `.md` file.
-2. Fill in at least three sections: **what you own**, **first checks**, and
-   **dangerous actions**. Save.
-3. Back in the chat, the profile shows *"Active in this chat"* and its name
-   appears in the top bar.
+1. Open **Library → Domain profiles**.
+2. Click **New** (starter template, opens the editor) — or **Import** to link an
+   existing profile `.md` file in place. A linked file **stays where it is**, so
+   you can keep profiles in a git repo.
+3. Fill in at least three sections: **what you own**, **first checks**, and
+   **dangerous actions**. Make sure the front matter parses (`id`, `name`,
+   `type`). Save.
 
 No profile yet? Start from this minimal template:
 
@@ -106,52 +86,80 @@ owner: My Team
 - Separate facts from hypotheses, and cite the runbook you relied on.
 ```
 
-## Step 5 — Add a knowledge base
+## Step 4 — Add a knowledge folder to your Library
 
-Under **Knowledge Base**, click the add-folder button and pick a folder of your
-team's docs — runbooks, TSGs, postmortems. NeatContext searches it **in place**
-(nothing is copied or uploaded) and cites the documents it uses as clickable
-sources under each answer. Details in
+Under **Library → Knowledge folders**, click **Add folder** and pick a folder of
+your team's docs — runbooks, TSGs, postmortems. NeatContext references it **in
+place** (nothing is copied or uploaded); when you connect an AI client, that
+client searches the folder itself and cites the documents it uses. Details in
 [Knowledge Bases](./features/knowledge-bases.md).
 
-![A chat with a profile and knowledge folder attached](/img/features/workspace-context.png)
+## Step 5 — Build a Context
+
+Open **Contexts** and select (or rename) a Context tab. A Context is a named
+selection of Library resources for one operational scope.
+
+1. Under **Domain profiles**, choose **Add from Library** and pick the profile
+   from Step 3. Mark one profile as **active**.
+2. Under **Knowledge folders**, add the folder from Step 4.
+3. (Optional) Under **Extensions**, enable any read-only connectors this Context
+   should offer — see Step 6.
+
+The Context page shows exactly which profiles, folders, and tools this Context
+will hand off, and reminds you that everything stays local until you connect.
 
 ## Step 6 — Add an extension (optional but recommended)
 
-Extensions give the model tools for your real systems — read an incident, search
-logs, list deployments. Open **Extensions** in the top bar:
+Extensions give your AI tools for your real systems — read an incident, search
+logs, list deployments. Open **Extensions**:
 
 - The bundled **PagerDuty** and **Datadog** connectors are ready to
   [connect](./features/using-extensions.md#connect-an-extension).
 - **Add** installs an extension from a folder; **Create** builds a read-only
   connector for any JSON HTTP API without writing code.
 
-![The Extensions page](/img/features/extensions-page.png)
+Enable an extension, then select it into your Context. The
+[incident demo](./guides/incident-analysis.md) ships a complete extension plus
+three mock systems for it to talk to — the fastest way to see tools in action
+without touching production.
 
-The [incident demo](./guides/incident-analysis.md) ships a complete extension
-plus three mock systems for it to talk to — the fastest way to see tools in
-action without touching production.
+## Step 7 — Connect your AI client
 
-## Step 7 — Ask your first question
+On the Context page, find the **Connect this context** panel and click **Connect**
+on the card for the client you use (Claude Code, Claude Desktop, Codex CLI, or
+ChatGPT Desktop).
 
-Type a question your profile and knowledge can answer. For an operational
-workspace:
+NeatContext opens a **fresh session** of that client, pinned to this Context, and
+starts a local MCP server it can reach. Approve the NeatContext tools if your
+client prompts you. No model configuration happens on the NeatContext side — the
+client brings its own model. See
+[Connecting AI Clients](./features/connect-ai-clients.md) for what each client does.
+
+## Step 8 — Ask your first question, in your AI client
+
+In the session NeatContext just opened, ask a question your profile and knowledge
+can answer. For an operational Context:
 
 ```text
 Please analyze this incident: <link or ID>.
 What should we check first, and what's the safe action?
 ```
 
-Watch the response: **activity steps** show each tool call as it happens, the
-answer **streams** in, and **source chips** underneath link to the exact
-documents used. Click a source to verify the answer against your own runbook.
+Your AI client calls NeatContext's `get_context` tool, reads the profile files,
+searches the knowledge folders, and calls the extension tools — then writes a
+grounded answer that ends with a **`## Sources`** section listing the exact files
+(with clickable `file://` links and line ranges) and tools it used. Open a source
+to verify the answer against your own runbook.
+
+Back in NeatContext, open **Context Activity** for this Context to see what was
+served and which tools ran.
 
 ## Where to go next
 
 - **[Core Concepts](./core-concepts.md)** — how the pieces combine, in five
   minutes.
+- **[Connecting AI Clients](./features/connect-ai-clients.md)** — what each
+  supported client does on Connect.
 - **[Incident Analysis walkthrough](./guides/incident-analysis.md)** — the
-  centerpiece demo: one incident, two teams, two correct answers.
-- **[Features](/category/features)** — every feature in depth.
-- **[Building Extensions](./extensions/overview.md)** — connect your own
-  systems.
+  centerpiece demo: one incident, two Contexts, two correct answers.
+- **[Building Extensions](./extensions/overview.md)** — connect your own systems.

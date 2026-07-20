@@ -30,7 +30,7 @@ tracker, or any other JSON-over-HTTP service.
 
 ## Open the builder
 
-On the **Extensions** page (top bar → Extensions), click **Create**. The
+On the **Extensions** page, click **Create**. The
 builder opens with a step indicator: **Basics → Auth → Data → Review**. Each
 step validates when you click **Next**, so mistakes surface next to the field
 that caused them — the same checks the app applies when it generates the
@@ -42,7 +42,7 @@ extension.
 
 | Field | What to enter |
 |---|---|
-| **Extension name** | A display name, e.g. `GitHub Users`. Shown on the Extensions page and in the chat activity trace; also becomes the generated folder's name (`github-users`). No effect on API calls. |
+| **Extension name** | A display name, e.g. `GitHub Users`. Shown on the Extensions page and in the Context activity log when the tool runs; also becomes the generated folder's name (`github-users`). No effect on API calls. |
 | **Base URL** | The address of the API: scheme + host, plus an optional path prefix — `https://api.github.com`, or e.g. `https://api.example.com/v2`. Every tool call requests **Base URL + Endpoint path** (Step 3). Must be http(s); a trailing slash is removed for you. |
 | **Description** | Optional. A short note shown on the extension's card, e.g. `Look up GitHub user profiles`. |
 
@@ -125,11 +125,12 @@ card enabled.
 
 1. If the extension needs credentials, fill the **Connect** form (API key) or
    click **Connect** (OAuth) on its card.
-2. Ask something in chat that needs the tool:
+2. Select the extension into a Context, connect your AI client, and ask something
+   that needs the tool:
 
    > What company does the GitHub user torvalds work for?
 
-   The activity trace shows `github_get_user` running, and the answer comes
+   The Context's activity log shows `github_get_user` running, and the answer comes
    from the live API response.
 
 ## Growing beyond the builder

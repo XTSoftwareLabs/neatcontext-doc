@@ -1,50 +1,55 @@
 ---
-sidebar_position: 2
+sidebar_position: 3
 ---
 
 # Domain Profiles
 
-A **domain profile** is a Markdown file that tells the model how *your* team (or
+A **domain profile** is a Markdown file that tells your AI how *your* team (or
 service, or domain) thinks: what it owns, what it checks first, and what it must
-never do. The **active** profile of a chat tab is injected into every request as
-steering context — it is the single highest-leverage piece of context you can add.
+never do. It is the single highest-leverage piece of context you can add — the
+**active** profile of a [Context](./contexts.md) is what the connected AI client
+reads first and treats as its primary behavioral guide.
 
-## Create or import a profile
+## Create or link a profile in the Library
 
-The **Domain Profiles** section in the sidebar has two buttons:
+Profiles live in your **[Library](./library.md)**. Open **Library → Domain
+profiles**:
 
-- **New** — creates a fresh profile with a starter template (*Purpose*,
+- **New** — creates a fresh profile from a starter template (*Purpose*,
   *First Checks*, *Dangerous Actions*) and opens it in the editor. The file is
-  stored in NeatContext's own data folder.
-- **Import** — picks an existing `.md` / `.markdown` file from disk. The file
+  stored under NeatContext's personal Library.
+- **Import** — links an existing `.md` / `.markdown` file from disk. The file
   **stays where it is** — NeatContext references it in place, so you can keep
   profiles in a git repo and share them with your team. Edits you make in
   NeatContext's editor are saved back to that same file.
 
-Either way, the profile attaches to the **current chat tab** and appears in the
-sidebar list.
+A **Team Library** can also share read-only profiles; they appear in the list with
+a team origin. See [The Library](./library.md).
 
-:::tip[Profiles are per-tab]
-Importing a profile attaches it to the tab you're on. Other tabs are untouched —
-that's what lets one tab be "Payments" and another "Infra". The **✕** next to a
-profile detaches it from the current tab only; the file on disk is unaffected.
+## Select it into a Context
+
+A profile only steers an answer once it is selected into a Context. On the
+**Contexts** page, under **Domain profiles**, choose **Add from Library** and pick
+the profile, then click it to mark it **active**.
+
+A Context can hold several profiles but exactly **one is active** — the active
+profile is what the client reads as its guide; the others are attached and ready to
+switch to. The **✕** detaches a profile from *this* Context only; the file on disk
+and its Library entry are unaffected.
+
+:::tip[Profiles are per-Context]
+Selecting a profile attaches it to the Context you're on. Other Contexts are
+untouched — that's what lets one Context be "Payments" and another "Infra".
 :::
-
-## Make it active
-
-A tab can have several profiles attached, but exactly **one is active** — the one
-marked *"Active in this chat"* and shown in the top bar. Click a profile in the
-sidebar to make it the active one. The active profile is what steers the model;
-the others are just attached and ready to switch to.
 
 ## Edit a profile
 
-Double-click a profile (or click its **pencil** icon) to open the editor:
+Open a profile in the editor (from the Library) to change it:
 
 ![The domain profile editor: metadata on top, raw Markdown below](/img/features/profile-editor.png)
 
 - **Name** and **Markdown file path** at the top.
-- The **raw Markdown** below — what you see is exactly what the model gets.
+- The **raw Markdown** below — what you see is exactly what the client reads.
 - **Save** writes to the profile's file; **Duplicate** copies it as a starting
   point for a similar team; **Delete** removes it (with confirmation).
 
@@ -94,32 +99,38 @@ Payments Engineering owns the customer-facing payment path: `checkout-api`,
 - Cite the runbook you relied on.
 ```
 
-The `owner` and `criticality` fields are shown in the top bar next to the active
-profile. Beyond that, the structure is yours — but **the more concrete your domain
-knowledge, the more accurately the model behaves.** Vague guidance produces vague,
-improvised answers; specific, spelled-out knowledge produces repeatable, correct
-ones. The profiles that work best are explicit about four things:
+The `owner` and `criticality` fields are surfaced as profile metadata. Beyond that,
+the structure is yours — but **the more concrete your domain knowledge, the more
+accurately the AI behaves.** Vague guidance produces vague, improvised answers;
+specific, spelled-out knowledge produces repeatable, correct ones. The profiles
+that work best are explicit about four things:
 
-1. **Ownership** — what is (and is not) this team's. This is what lets the model
+1. **Ownership** — what is (and is not) this team's. This is what lets the AI
    correctly say *"not ours — hand off"* instead of guessing at a fix.
-2. **Investigation order** — the team's first checks, in order. The model will
+2. **Investigation order** — the team's first checks, in order. The AI will
    actually follow them.
 3. **Tool usage** — which tools to call, in which situations, and in what order.
    Don't just list the tools available; tie each one to a trigger and a step, e.g.
    *"when a deploy is suspected, call `list_recent_deploys` for our services
    first, then compare timestamps."* Also state when **not** to call a tool. The
-   more precisely you script this, the more reliably the model calls the right
-   tool at the right moment instead of improvising.
-4. **Guardrails** — dangerous actions, stated as prohibitions. The model repeats
-   these as warnings at exactly the right moments.
+   more precisely you script this, the more reliably the AI calls the right tool at
+   the right moment instead of improvising.
+4. **Guardrails** — dangerous actions, stated as prohibitions. The AI repeats these
+   as warnings at exactly the right moments.
 
 The [incident demo's two profiles](https://github.com/XTSoftwareLabs/neatcontext-demo/tree/main/profiles)
 are complete, realistic examples — including how they wire specific tools into the
 investigation steps — and are worth copying as a starting point.
 
+:::caution[Keep secrets out of profiles]
+A profile is read verbatim by the connected AI client, and is meant to be
+version-controlled. Never put credentials in it — extension secrets belong in the
+encrypted connection flow, not in a profile file.
+:::
+
 ## Where profiles live
 
-Profiles created with **New** are stored by NeatContext for you; imported
+Profiles created with **New** are stored in your personal Library; imported
 profiles remain at their original path (shown in the editor). Either kind is a
 plain Markdown file you can open, diff, and version like any other text file —
 there is no lock-in format.
