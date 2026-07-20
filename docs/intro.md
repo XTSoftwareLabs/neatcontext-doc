@@ -17,11 +17,10 @@ context and hands it to the AI client you **already work in** — Claude Code,
 Claude Desktop, Codex CLI, or ChatGPT Desktop. Your domain profiles, knowledge
 folders, and tool connections live on your own machine.
 
-NeatContext **runs no model of its own**. It hosts no chat, stores no model API
-key, and produces no answer. Instead, it serves your selected context to your
-AI client over a local MCP (Model Context Protocol) connection; that
-client reads your files, searches your folders, calls your tools, and writes the
-answer with **its own** model.
+You keep working in your AI client — NeatContext just gives it your team's
+context so its answers are grounded in *your* runbooks, systems, and rules. There
+is no model to configure and no API key to enter: your AI client brings its own
+model.
 
 ## Why NeatContext
 

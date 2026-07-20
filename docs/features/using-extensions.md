@@ -6,11 +6,10 @@ sidebar_position: 6
 
 **Extensions** give your AI **tools**: read an incident, search logs, list
 deployments, look up a service. Each extension is a small read-only connector that
-runs locally as part of NeatContext. When you [connect an AI client](./connect-ai-clients.md)
-to a Context, NeatContext advertises that Context's enabled extension tools on the
-same connection and **proxies** each call — the client calls your systems directly
-but never sees a secret. This page is about *using* extensions; to write your own,
-see [Building Extensions](../extensions/overview.md).
+runs locally. Enable an extension and select it into a Context, and your connected
+AI client can use its tools — with your credentials kept encrypted on your machine,
+never exposed to the client. This page is about *using* extensions; to write your
+own, see [Building Extensions](../extensions/overview.md).
 
 Open the **Extensions** page from the navigation:
 
@@ -31,25 +30,22 @@ disabled but not removed):
 They are also reference implementations: click the **folder icon** on either
 card to open its source.
 
-Beyond extensions, the connected AI client reads your selected profiles and
-searches your selected knowledge folders with **its own** file and search tools —
-NeatContext just hands it the paths.
+Beyond extensions, your connected AI client also reads the Context's domain
+profiles and searches its knowledge folders — those need no setup here.
 
 ## Add an extension
 
 1. Click **Add**.
 2. Pick the extension's **folder** — the one containing its
    `neatcontext-extension.json` manifest.
-3. NeatContext validates the folder and **installs a snapshot** into its own data
-   directory. The new card appears in the list.
+3. Review and **install** it. The new card appears in the list.
 
 ![A user-installed extension card with its tools listed](/img/features/extensions-with-demo.png)
 
 Each card shows the extension's name, description, version, its **tools** (hover
 one for its description), and controls: **Enable/Disable**, **open folder**, and —
-for extensions you added — **remove**. An extension folder is a *source location*;
-its installed snapshot is what actually runs, so a later change to the source needs
-an explicit **Update / Reload** before new code runs (see [The Library](./library.md)).
+for extensions you added — **remove**. If you change an extension's files later,
+use its **Update** button to pick up the change.
 
 :::caution[Extensions are code you run]
 An extension runs on your machine with your user's permissions. Treat a
@@ -77,10 +73,8 @@ card adapts:
 
   ![The PagerDuty card: connect through the provider's sign-in page](/img/features/extension-pagerduty-card.png)
 
-Either way, credentials are **encrypted with your OS secure storage**, stay on
-your machine, and are injected into the extension only at the moment a tool runs —
-never written into its folder and never exposed to the AI client. **Disconnect**
-deletes the stored credentials.
+Either way, credentials are **encrypted and stay on your machine**, and are never
+exposed to the AI client. **Disconnect** deletes the stored credentials.
 
 ## Enable it and select it into a Context
 
@@ -90,10 +84,9 @@ client to see an extension's tools:
 1. The extension is **enabled** on the Extensions page.
 2. It is **selected** into the Context under **Extensions** on the Context page.
 
-If your AI client asks a question that needs a not-yet-connected extension, the
-extension returns a *connection-required* result and the client relays a "connect
-it first" message instead of guessing — connect it in NeatContext, and the next
-call works.
+If you ask something that needs an extension you haven't connected yet, your AI
+client will tell you to connect it first. Connect it in NeatContext, then ask
+again.
 
 ## Create your own extension
 
@@ -111,9 +104,8 @@ There are **two ways** to create an extension:
    examples. For a full field-by-field walkthrough with a real API, see
    [Create an Extension in the UI](../extensions/create-extension-ui.md).
 
-2. **Write one yourself (code)** — a single Node script speaking MCP gives you
-   multiple tools and custom logic. See
-   [Building Extensions](../extensions/overview.md).
+2. **Write one yourself (code)** — a single Node script gives you multiple tools
+   and custom logic. See [Building Extensions](../extensions/overview.md).
 
 Either way the result installs like any other extension: it appears on the
 Extensions page, its folder is openable (a generated one is a nice starting

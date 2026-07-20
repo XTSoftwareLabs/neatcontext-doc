@@ -58,17 +58,18 @@ Context; the resource stays in your Library and on disk.
 
 ## Connecting a client to a Context
 
-Every AI-client session is **pinned to exactly one Context**. Click **Connect** on
-a client card and NeatContext opens a **fresh** session of that client, wired to a
-local MCP server scoped to this Context. Details, and what each client does, are in
+In the **Connect this context** panel, click **Connect** on your client's card. A
+new session opens for *this* Context. Full steps and what each client does are in
 [Connecting AI Clients](./connect-ai-clients.md).
 
-Two important behaviors:
+Two things to know:
 
-- **Live edits.** If you change a connected Context's selection, the client picks
-  it up on its **next** `get_context` call — no reconnect needed.
-- **No silent retargeting.** Selecting a different Context tab does **not** point an
-  open session at it. To work in another Context, connect a new session for it.
+- **You can edit a connected Context.** Add or remove a profile, folder, or
+  extension and just ask your next question — the client uses the change with no
+  reconnect.
+- **Switching tabs doesn't switch the session.** Selecting a different Context tab
+  doesn't change an open session. To work in another Context, click **Connect** on
+  it to open a new session.
 
 ## One incident, two Contexts
 
@@ -81,10 +82,9 @@ exactly this.
 
 ## Deleting a Context
 
-Click the **✕** on the tab. NeatContext asks for confirmation. Deleting a Context
-removes its selection and its activity log, and cleans up its runtime files; the
-profiles, folders, and extensions it referenced are **not** deleted — they stay in
-your Library for other Contexts.
+Click the **✕** on the tab and confirm. Deleting a Context removes its selection
+and its activity log. The profiles, folders, and extensions it used are **not**
+deleted — they stay in your Library for your other Contexts.
 
 :::info[Plan limits]
 The number of Contexts, and of knowledge folders and enabled extensions per

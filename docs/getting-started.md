@@ -12,14 +12,11 @@ them into a **Context**, then **connect** the AI client you already use.
 ## Prerequisites
 
 - **The NeatContext desktop app** — installed and able to open (Windows or macOS).
-- **A supported AI client, installed and signed in** — one of:
-  - **[Claude Code](./features/connect-ai-clients.md#claude-code)** (CLI)
-  - **[Claude Desktop](./features/connect-ai-clients.md#claude-desktop)** (uses its built-in Claude Code)
-  - **[Codex CLI](./features/connect-ai-clients.md#codex-cli)**
-  - **[ChatGPT Desktop](./features/connect-ai-clients.md#chatgpt-desktop)** (uses its built-in Codex)
-
-  NeatContext brings **no model** — your AI client brings its own. There is no
-  API key to enter in NeatContext.
+- **A supported AI client, installed and signed in** — one of Claude Code, Claude
+  Desktop, Codex CLI, or ChatGPT Desktop (see
+  [Connecting AI Clients](./features/connect-ai-clients.md)). NeatContext brings
+  **no model** — your AI client brings its own, so there is no API key to enter in
+  NeatContext.
 - **(Optional) Node.js 18+** — only if you plan to run the
   [incident demo](./guides/incident-analysis.md)'s mock systems or
   [develop your own extensions](./extensions/building-extensions.md). Just
@@ -125,31 +122,29 @@ without touching production.
 
 ## Step 7 — Connect your AI client
 
-On the Context page, find the **Connect this context** panel and click **Connect**
-on the card for the client you use (Claude Code, Claude Desktop, Codex CLI, or
-ChatGPT Desktop).
+1. On the Context page, find the **Connect this context** panel.
+2. Click **Connect** on the card for the client you use (Claude Code, Claude
+   Desktop, Codex CLI, or ChatGPT Desktop).
+3. A new session of that client opens. If it asks, **trust** the folder it opens
+   and **approve** the `neatcontext` tools.
 
-NeatContext opens a **fresh session** of that client, pinned to this Context, and
-starts a local MCP server it can reach. Approve the NeatContext tools if your
-client prompts you. No model configuration happens on the NeatContext side — the
-client brings its own model. See
-[Connecting AI Clients](./features/connect-ai-clients.md) for what each client does.
+There is no model to configure — the client brings its own. See
+[Connecting AI Clients](./features/connect-ai-clients.md) for what each client
+does on Connect.
 
 ## Step 8 — Ask your first question, in your AI client
 
-In the session NeatContext just opened, ask a question your profile and knowledge
-can answer. For an operational Context:
+In the session that just opened, ask a question your profile and knowledge can
+answer. For an operational Context:
 
 ```text
 Please analyze this incident: <link or ID>.
 What should we check first, and what's the safe action?
 ```
 
-Your AI client calls NeatContext's `get_context` tool, reads the profile files,
-searches the knowledge folders, and calls the extension tools — then writes a
-grounded answer that ends with a **`## Sources`** section listing the exact files
-(with clickable `file://` links and line ranges) and tools it used. Open a source
-to verify the answer against your own runbook.
+Your AI client answers using the Context you built, and ends with a **Sources**
+list of the files and tools it used. Click a source to check the answer against
+your own runbook.
 
 Back in NeatContext, open **Context Activity** for this Context to see what was
 served and which tools ran.
