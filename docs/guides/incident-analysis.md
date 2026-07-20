@@ -126,8 +126,7 @@ opens a fresh session pinned to the *Payments* Context; approve the `neatcontext
 tools if prompted. Then ask, in that session:
 
 ```text
-Please analyze incident https://localhost:7801/incidents/INC-1001.
-What should we check first, and what's the safe action?
+Please use NeatContext mcp server to analyze incident https://localhost:7801/incidents/INC-1001.
 ```
 
 **What you should see.** The AI reads the Payments profile, calls the demo tools
