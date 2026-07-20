@@ -35,7 +35,7 @@ profiles and searches its knowledge folders — those need no setup here.
 
 ## Add an extension
 
-1. Click **Add**.
+1. Click **Install from folder**.
 2. Pick the extension's **folder** — the one containing its
    `neatcontext-extension.json` manifest.
 3. Review and **install** it. The new card appears in the list.
@@ -45,7 +45,7 @@ profiles and searches its knowledge folders — those need no setup here.
 Each card shows the extension's name, description, version, its **tools** (hover
 one for its description), and controls: **Enable/Disable**, **open folder**, and —
 for extensions you added — **remove**. If you change an extension's files later,
-use its **Update** button to pick up the change.
+use its **Reload** button to pick up the change.
 
 :::caution[Extensions are code you run]
 An extension runs on your machine with your user's permissions. Treat a
