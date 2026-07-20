@@ -46,25 +46,16 @@ Library** — contributing back is a normal git workflow.
 Each resource shows its **origin** so you can tell built-in, personal, and team
 resources apart.
 
-## Extensions have a stricter lifecycle
+## Installing extensions
 
-Profiles and knowledge folders are just files, so they are linked in place. An
-extension is **executable code**, so it is handled more carefully:
+The bundled **PagerDuty** and **Datadog** connectors are ready to use right away.
+Any other extension — one you **Add**, **Create**, or that comes from a Team
+Library — has to be **installed** before you can use it: open **Library →
+Extensions** (or the **Extensions** page) and click **Install**, then review it.
+See [Using Extensions](./using-extensions.md).
 
-- **Bundled** extensions ship inside the app and are ready immediately.
-- A **personal** or **team** extension folder is a *source location* only. It
-  becomes callable after you explicitly **install** it — NeatContext validates the
-  source and copies a snapshot into app-managed storage.
-- Source changes are reported, but an **Update / Reload** must explicitly replace
-  the installed snapshot before new code runs.
+## Your files stay yours
 
-This is why an extension you add is trusted narrowly: only bundled first-party
-extensions on NeatContext's allowlist are treated as fully trusted; everything else
-runs as the read-only connector you reviewed and installed.
-
-## Where things live
-
-Personal profiles and knowledge folders are linked by reference and recorded in
-NeatContext's local machine state — the files themselves stay wherever you put
-them. Installed extension snapshots live in NeatContext's app data. Nothing in the
-Library is uploaded to a NeatContext server.
+Linked profiles and knowledge folders stay wherever you put them on disk — the
+Library just points to them. Nothing in the Library is uploaded to a NeatContext
+server.

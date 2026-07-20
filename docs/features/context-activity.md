@@ -16,11 +16,9 @@ changes the app's active Context).
 ## What's recorded
 
 - **Sessions opened** — when a client connected to this Context.
-- **Context injections** — when the current Context was served to the client
-  (via `get_context` or the per-prompt hook).
-- **Tool calls** — each extension tool the client invoked, with timing and a
-  **truncated preview**. Full tool payloads are **not** stored by default, and
-  credentials and sensitive fields are redacted.
+- **Context handoffs** — when this Context was handed to the client.
+- **Tool calls** — each extension tool the client used, with timing and a short
+  preview. Full tool payloads aren't stored, and credentials are hidden.
 
 This is how you verify a Context: connect a client, ask a question, then read the
 log to confirm which profiles, folders, and tools were actually served and run.

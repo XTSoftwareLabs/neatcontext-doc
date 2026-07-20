@@ -129,10 +129,9 @@ Please analyze incident https://localhost:7801/incidents/INC-1001.
 What should we check first, and what's the safe action?
 ```
 
-**What you should see.** The client calls `get_context`, reads the Payments
-profile, then calls `demo_get_incident`, `demo_search_logs`, and
-`demo_list_deployments`, searches the Payments runbooks, and runs the profile's "is
-this ours?" triage:
+**What you should see.** The AI reads the Payments profile, calls the demo tools
+(`demo_get_incident`, `demo_search_logs`, `demo_list_deployments`), searches the
+Payments runbooks, and runs the profile's "is this ours?" triage:
 
 - the 5xx started **09:02, before** the 09:05 checkout-api deploy → our deploy
   isn't the trigger;
@@ -144,9 +143,9 @@ this ours?" triage:
 hand off to Infra Team**, with the evidence. A good investigation can correctly end
 in a hand-off.
 
-The answer ends with a **`## Sources`** section citing the exact files it read —
+The answer ends with a **Sources** section citing the exact files it read —
 `checkout-api-5xx.md`, `service-ownership.md`, and the hand-off postmortem — as
-clickable `file://` links, plus the demo tools it called. Two levers are at work:
+clickable links, plus the demo tools it called. Two levers are at work:
 the answer is **grounded in the Payments knowledge base**, and the **profile shapes
 the response**, applying the "is this ours?" triage and the "don't touch Infra's
 surface — hand off" rule.
@@ -189,7 +188,7 @@ handed off and run.
 - **The knowledge base grounds the answer.** Each team's runbooks/TSGs/postmortems
   give the AI team-specific first-checks and *dangerous-action* rules it would not
   otherwise know — and the citations let you verify.
-- **The extension is just an MCP connector.** Point the same pattern at *your*
+- **The extension is a read-only connector.** Point the same pattern at *your*
   real incident/log/deploy systems and it works beyond the demo.
 
 ## Take it further

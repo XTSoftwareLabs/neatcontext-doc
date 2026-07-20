@@ -34,11 +34,10 @@ are untouched.
 
 ## How it shows up in answers
 
-When you ask a question in a connected client, the client searches the attached
-folders **in place, locally on your machine**, and the documents it used are cited
-in the answer's **`## Sources`** section — as clickable `file://` links with the
-exact line ranges relied on. That's how you verify an answer instead of trusting
-it.
+When you ask a question in a connected client, the documents it uses are cited in
+the answer's **Sources** section — as clickable links to the exact lines. That's
+how you verify an answer instead of trusting it. Searches run locally on your
+machine.
 
 Text-based documents work best — Markdown, plain text, logs, JSON, CSV, HTML.
 Folders work best when they're focused documentation folders rather than an entire
