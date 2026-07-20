@@ -76,17 +76,17 @@ same syntax as the Log Explorer search bar — and you'll see the call as an
 Prompts to try:
 
 ```text
-Search Datadog for errors from the payments service in the last 15 minutes.
+Use NeatContext mcp server to search Datadog for errors from the payments service in the last 15 minutes.
 What's the dominant failure?
 ```
 
 ```text
-Show me checkout-api logs with @http.status_code:500 over the last 2 hours,
+Use NeatContext mcp server to show checkout-api logs with @http.status_code:500 over the last 2 hours,
 oldest first. When did they start?
 ```
 
 ```text
-Pull the last 50 error logs on host web-7 and summarize the distinct error
+Use NeatContext mcp server to pull the last 50 error logs on host web-7 and summarize the distinct error
 messages.
 ```
 

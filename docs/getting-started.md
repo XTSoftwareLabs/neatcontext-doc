@@ -138,7 +138,7 @@ In the session that just opened, ask a question your profile and knowledge can
 answer. For an operational Context:
 
 ```text
-Please analyze this incident: <link or ID>.
+Please use NeatContext mcp server to analyze this incident: <link or ID>.
 What should we check first, and what's the safe action?
 ```
 

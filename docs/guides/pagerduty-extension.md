@@ -69,16 +69,16 @@ tools accept all three:
 Some prompts to try:
 
 ```text
-Summarize https://acme.pagerduty.com/incidents/Q3XYZ12ABC45DE —
+Use NeatContext mcp server to summarize https://acme.pagerduty.com/incidents/Q3XYZ12ABC45DE —
 who's assigned, and what does the timeline show so far?
 ```
 
 ```text
-Are there incidents related to Q3XYZ12ABC45DE right now?
+Use NeatContext mcp server to find incidents related to Q3XYZ12ABC45DE right now.
 ```
 
 ```text
-Has incident 4211 happened before? Find similar past incidents.
+Use NeatContext mcp server to check whether incident 4211 has happened before — find similar past incidents.
 ```
 
 Your AI client shows each PagerDuty tool call as it makes it, and the call is also
