@@ -6,7 +6,7 @@ sidebar_position: 5
 
 NeatContext does **not** host or resell a model, and it never asks for a model API
 key. Your answers come from the AI client you already use. NeatContext's job is to
-hand that client the right context — over a local [MCP](https://modelcontextprotocol.io)
+hand that client the right context — over a local MCP (Model Context Protocol)
 connection — and then get out of the way while the client reads, searches, calls
 tools, and writes the answer with **its own** model.
 
@@ -22,6 +22,8 @@ tools, and writes the answer with **its own** model.
 Each card on a Context's **Connect this context** panel shows a readiness hint —
 *Ready to connect*, *…not found* (client not installed), or *Build required* (the
 native backend still needs building, only in a source build).
+
+![The Connect this context panel on the Context page, with a Connect button on each of the ChatGPT Desktop, Claude Desktop, Codex CLI, and Claude Code CLI cards](/img/features/contexts-page.png)
 
 ## How to connect
 

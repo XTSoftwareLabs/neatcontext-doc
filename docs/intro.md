@@ -19,7 +19,7 @@ folders, and tool connections live on your own machine.
 
 NeatContext **runs no model of its own**. It hosts no chat, stores no model API
 key, and produces no answer. Instead, it serves your selected context to your
-AI client over a local [MCP](https://modelcontextprotocol.io) connection; that
+AI client over a local MCP (Model Context Protocol) connection; that
 client reads your files, searches your folders, calls your tools, and writes the
 answer with **its own** model.
 

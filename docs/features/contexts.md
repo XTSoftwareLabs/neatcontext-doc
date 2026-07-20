@@ -16,6 +16,8 @@ actual work there. See [Connecting AI Clients](./connect-ai-clients.md).
 
 ## The Context page at a glance
 
+![The Context page: a Context's selected profile, knowledge folder, and extension on the left, and the Connect this context panel with a card per AI client on the right](/img/features/contexts-page.png)
+
 - **Tab strip (top)** — one tab per Context, plus a **+** button for a new Context.
 - **Selection panels** — this Context's **Domain profiles** (one marked *active*),
   its **Knowledge folders**, and its **Extensions**. Each panel has an **Add from
