@@ -265,11 +265,12 @@ descriptions:
 1. In NeatContext, open **Extensions → Add extension** and select your
    `status-board/` folder.
 2. **Enable** it. With `connection: none` there's nothing to authenticate.
-3. In a chat with a tool-calling model, ask: *"Is checkout-api healthy right now?"*
-   The model should call `board_get_service_status` and answer from the result.
+3. Select the extension into a Context, connect your AI client, and ask:
+   *"Is checkout-api healthy right now?"* The client should call
+   `board_get_service_status` and answer from the result.
 
-If a tool doesn't get called, check that your model is tool-calling capable, that
-`tools/list` returns the tool, and that the description makes its purpose obvious.
+If a tool doesn't get called, check that `tools/list` returns the tool and that its
+description makes its purpose obvious.
 
 ## 6. Point it at real systems
 

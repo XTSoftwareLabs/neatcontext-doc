@@ -1,15 +1,18 @@
 ---
-sidebar_position: 5
+sidebar_position: 6
 ---
 
 # Using Extensions
 
-**Extensions** give the model **tools**: read an incident, search logs, list
-deployments, look up a service. Each extension is a small connector that runs
-locally as part of NeatContext. This page is about *using* extensions; to write
-your own, see [Building Extensions](../extensions/overview.md).
+**Extensions** give your AI **tools**: read an incident, search logs, list
+deployments, look up a service. Each extension is a small read-only connector that
+runs locally as part of NeatContext. When you [connect an AI client](./connect-ai-clients.md)
+to a Context, NeatContext advertises that Context's enabled extension tools on the
+same connection and **proxies** each call — the client calls your systems directly
+but never sees a secret. This page is about *using* extensions; to write your own,
+see [Building Extensions](../extensions/overview.md).
 
-Open the page with the **Extensions** button in the top bar:
+Open the **Extensions** page from the navigation:
 
 ![The Extensions page, with the bundled Datadog and PagerDuty connectors](/img/features/extensions-page.png)
 
@@ -28,30 +31,32 @@ disabled but not removed):
 They are also reference implementations: click the **folder icon** on either
 card to open its source.
 
-Independent of extensions, a set of **built-in local tools** is always available
-to the model: searching the tab's knowledge folders, reading files from them, and
-reading your domain profiles. These are read-only and limited to the folders and
-profiles you attached.
+Beyond extensions, the connected AI client reads your selected profiles and
+searches your selected knowledge folders with **its own** file and search tools —
+NeatContext just hands it the paths.
 
 ## Add an extension
 
 1. Click **Add**.
 2. Pick the extension's **folder** — the one containing its
    `neatcontext-extension.json` manifest.
-3. NeatContext **copies** the folder into its own data directory and loads it.
-   The new card appears in the list, enabled.
+3. NeatContext validates the folder and **installs a snapshot** into its own data
+   directory. The new card appears in the list.
 
 ![A user-installed extension card with its tools listed](/img/features/extensions-with-demo.png)
 
 Each card shows the extension's name, description, version, its **tools** (hover
-one for its description), and the controls: **Enable/Disable**, **open folder**,
-and — for extensions you added — **remove**.
+one for its description), and controls: **Enable/Disable**, **open folder**, and —
+for extensions you added — **remove**. An extension folder is a *source location*;
+its installed snapshot is what actually runs, so a later change to the source needs
+an explicit **Update / Reload** before new code runs (see [The Library](./library.md)).
 
 :::caution[Extensions are code you run]
 An extension runs on your machine with your user's permissions. Treat a
 third-party extension like any code you download: review it before adding
 (click the folder icon and read the server — good extensions are a single
-readable file). Prefer read-only connectors.
+readable file). Only bundled first-party connectors are treated as fully trusted;
+prefer read-only connectors.
 :::
 
 ## Connect an extension
@@ -73,12 +78,22 @@ card adapts:
   ![The PagerDuty card: connect through the provider's sign-in page](/img/features/extension-pagerduty-card.png)
 
 Either way, credentials are **encrypted with your OS secure storage**, stay on
-your machine, and are handed to the extension only at the moment a tool runs —
-never written into its folder. **Disconnect** deletes the stored credentials.
+your machine, and are injected into the extension only at the moment a tool runs —
+never written into its folder and never exposed to the AI client. **Disconnect**
+deletes the stored credentials.
 
-If you ask a question that needs a not-yet-connected extension, the answer will
-say so and offer a **Connect** button right in the chat — you don't have to
-remember to set things up in advance.
+## Enable it and select it into a Context
+
+Extensions are handed off per Context. Two things have to be true for a connected
+client to see an extension's tools:
+
+1. The extension is **enabled** on the Extensions page.
+2. It is **selected** into the Context under **Extensions** on the Context page.
+
+If your AI client asks a question that needs a not-yet-connected extension, the
+extension returns a *connection-required* result and the client relays a "connect
+it first" message instead of guessing — connect it in NeatContext, and the next
+call works.
 
 ## Create your own extension
 
@@ -105,11 +120,10 @@ Extensions page, its folder is openable (a generated one is a nice starting
 point if you later want to hand-edit it), and secrets go through the normal
 encrypted connection flow, never into the generated files.
 
-## Extensions in chat
+## Seeing extensions in use
 
-Every enabled extension's tools are available to the model in every chat. When
-the model uses one, you see it as an **activity step** in the response — tool
-use is never invisible.
+When a connected client calls an extension tool, the call is recorded in that
+Context's [activity log](./context-activity.md) — tool use is never invisible.
 
 :::info[Plan limits]
 The number of enabled extensions depends on your plan — see

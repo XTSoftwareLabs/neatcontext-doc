@@ -1,58 +1,59 @@
 ---
-sidebar_position: 3
+sidebar_position: 4
 ---
 
 # Knowledge Bases
 
 A **knowledge base** is a local folder of documents — typically a team's
-**runbooks**, **troubleshooting guides (TSGs)**, and **postmortems** — that
-NeatContext searches when answering. It's what turns "an LLM's general opinion"
-into "an answer grounded in *your* documents, with citations you can click".
+**runbooks**, **troubleshooting guides (TSGs)**, and **postmortems** — that your
+connected AI client searches when answering. It's what turns "an LLM's general
+opinion" into "an answer grounded in *your* documents, with citations you can
+click".
 
-## Add a folder
+## Link a folder in the Library
 
-In the sidebar's **Knowledge Base** section, click the **add folder** button and
-pick a directory. The folder attaches to the **current chat tab** and is searched
-from the next message on.
-
-![A knowledge folder attached to the current tab](/img/features/sidebar.png)
+Knowledge folders live in your **[Library](./library.md)**. Open **Library →
+Knowledge folders**, click **Add folder**, and pick a directory. The folder is
+**linked in place** — NeatContext reads it where it lives; nothing is copied or
+uploaded. A read-only **Team Library** can share folders too.
 
 Some useful properties:
 
-- **The folder stays yours.** NeatContext reads it in place — nothing is copied
-  or uploaded. Keep runbooks in the git repo where they already live; edits are
-  picked up automatically on the next search.
-- **Several folders per tab.** Attach as many as the topic needs (runbooks +
-  postmortems + architecture notes, say).
-- **Per-tab attachment.** Like profiles, folders attach to the tab you're on.
-  The **✕** detaches a folder from this tab only; other tabs and the folder on
-  disk are untouched.
-- Click a folder's name to see its full path; double-click to reveal it in your
-  file explorer.
+- **The folder stays yours.** Keep runbooks in the git repo where they already
+  live; edits are picked up automatically on the next search.
+- Click a folder's name to see its full path; use its reveal action to open it in
+  your file explorer.
+
+## Select it into a Context
+
+On the **Contexts** page, under **Knowledge folders**, choose **Add from Library**
+to attach a folder to the current Context. Attach as many as the topic needs
+(runbooks + postmortems + architecture notes, say). The **✕** detaches a folder
+from *this* Context only; other Contexts, the Library entry, and the folder on disk
+are untouched.
 
 ## How it shows up in answers
 
-When your question touches something in an attached folder, the relevant
-documents inform the answer, and the ones that were used appear as **clickable
-sources** under the response — click one to open the file at the relevant lines.
-Searches run **locally on your machine**.
+When you ask a question in a connected client, the client searches the attached
+folders **in place, locally on your machine**, and the documents it used are cited
+in the answer's **`## Sources`** section — as clickable `file://` links with the
+exact line ranges relied on. That's how you verify an answer instead of trusting
+it.
 
 Text-based documents work best — Markdown, plain text, logs, JSON, CSV, HTML.
-Common non-content directories (like `.git`, `node_modules`, and build outputs)
-are skipped automatically, but folders work best when they're focused
-documentation folders rather than an entire home directory.
+Folders work best when they're focused documentation folders rather than an entire
+home directory.
 
 ## Tips for a good knowledge base
 
-The documents that work best for NeatContext are the ones that are good for
-humans too:
+The documents that work best are the ones that are good for humans too:
 
 - **Use the real names of things** — service names, error strings, config keys.
   A runbook that quotes the exact error
   (`could not obtain connection from pool 'billing-postgres'`) is easy to find
   the moment that error appears in an incident.
 - **One topic per file**, with a descriptive filename (`checkout-api-5xx.md`
-  beats `notes3.md`) — the filename is also what you'll see in the source chips.
+  beats `notes3.md`) — the filename is also what you'll see in the cited sources.
 - **Keep postmortems.** They encode "we've seen this before", which is often the
   fastest route to a diagnosis.
 
@@ -60,6 +61,6 @@ The [incident demo's knowledge folders](https://github.com/XTSoftwareLabs/neatco
 show the pattern: `runbooks/`, `tsg/`, and `postmortems/` per team.
 
 :::info[Plan limits]
-The number of knowledge folders per chat depends on your plan — see
+The number of knowledge folders per Context depends on your plan — see
 [neatcontext.com/pricing](https://www.neatcontext.com/pricing).
 :::

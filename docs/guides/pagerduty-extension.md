@@ -5,27 +5,27 @@ sidebar_position: 2
 # Using the PagerDuty Extension
 
 NeatContext ships a **built-in PagerDuty connector**: three read-only incident
-tools the model can call while you investigate — incident details, related
-incidents, and similar past incidents. It connects with **OAuth** (you sign in
-through your browser; no API keys to create), and it can only *read*: it never
+tools your connected AI client can call while you investigate — incident details,
+related incidents, and similar past incidents. It connects with **OAuth** (you sign
+in through your browser; no API keys to create), and it can only *read*: it never
 acknowledges, resolves, or modifies anything in your PagerDuty account.
 
-This guide walks through connecting it and using it in chat, step by step.
+This guide walks through connecting it and using it from your AI client, step by step.
 
 ## Prerequisites
 
-- **NeatContext** installed, with a **tool-calling-capable** model configured
-  and active (see [Getting Started](../getting-started.md)).
+- **NeatContext** installed, and a **supported AI client** installed and signed in
+  (see [Getting Started](../getting-started.md)). NeatContext brings no model.
 - A **PagerDuty account** you can sign into in your browser. Any user that can
   view incidents is enough — the connection asks only for **read** access.
 
 ## Step 1 — Find the PagerDuty card
 
-Open the **Extensions** page from the top bar. PagerDuty ships bundled, so its
-card is already there, marked *Built-in* — nothing to add or install. Make sure
-it is **enabled**.
+Open the **Extensions** page. PagerDuty ships bundled, so its card is already
+there, marked *Built-in* — nothing to add or install. Make sure it is **enabled**,
+and select it into the Context you'll connect.
 
-The card lists the three tools it gives the model (hover a tool for its
+The card lists the three tools it gives your AI client (hover a tool for its
 description):
 
 | Tool | What it does |
@@ -81,17 +81,18 @@ Are there incidents related to Q3XYZ12ABC45DE right now?
 Has incident 4211 happened before? Find similar past incidents.
 ```
 
-Watch the **activity steps** above the answer — you'll see each PagerDuty tool
-call as it happens; tool use is never invisible. And because this is
-NeatContext, the answer is shaped by the **domain profile** and grounded in the
-**knowledge folders** attached to the tab: pair the PagerDuty tools with your
-team's runbooks and the model triages the incident *your team's* way (see the
+Your AI client shows each PagerDuty tool call as it makes it, and the call is also
+recorded in the Context's [activity log](../features/context-activity.md); tool use
+is never invisible. And because this is NeatContext, the answer is shaped by the
+Context's **domain profile** and grounded in its **knowledge folders**: pair the
+PagerDuty tools with your team's runbooks and the AI triages the incident *your
+team's* way (see the
 [Incident Analysis walkthrough](./incident-analysis.md) for that pattern
 end-to-end).
 
 ### What each tool accepts
 
-You normally never spell these out — the model fills them in — but knowing the
+You normally never spell these out — your AI fills them in — but knowing the
 knobs helps you phrase requests:
 
 - **Incident details** can include or skip the incident's log entries
@@ -102,9 +103,8 @@ knobs helps you phrase requests:
 
 ## Troubleshooting
 
-- **The answer says PagerDuty isn't connected**, with a **Connect PagerDuty**
-  button in the chat — you asked an incident question before connecting. Click
-  the button (or connect on the Extensions page) and ask again.
+- **The answer says PagerDuty isn't connected** — you asked an incident question
+  before connecting. Connect PagerDuty on the Extensions page, then ask again.
 - **It was working, now it asks to reconnect** — the stored token was revoked
   or could not be refreshed (e.g. your PagerDuty session was removed by an
   admin). Click **Connect** again; the browser round trip repairs it.

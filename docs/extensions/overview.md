@@ -32,7 +32,7 @@ pages cover [API-key](./api-key-extensions.md) and
 An extension is a small program that speaks the **Model Context Protocol (MCP)**. It
 advertises a set of **tools** (each with a name, description, and JSON-Schema input)
 and executes them when the model calls. NeatContext launches your extension, asks it
-what tools it has, and routes tool calls to it during chat.
+what tools it has, and routes a connected AI client's tool calls to it.
 
 A NeatContext extension is a folder containing:
 
@@ -135,8 +135,8 @@ return a *connection-required* result instead of failing:
   "provider": "myservice", "message": "Connect MyService before searching logs." }
 ```
 
-NeatContext stops the tool loop, shows your `message` as the answer, and renders a
-**Connect &lt;Extension&gt;** button in the chat. Rejected credentials
+The connected AI client relays your `message` — a "connect it first" prompt — instead
+of guessing; connect the extension in NeatContext and the next call works. Rejected credentials
 (`"error": "myservice_access_denied"`, optionally with `connection_required: true`)
 behave the same. Ordinary failures (bad query, timeout) should **not** set these
 fields — the model can then correct itself and retry. The exact contract is in the
