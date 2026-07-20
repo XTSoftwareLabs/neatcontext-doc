@@ -127,6 +127,7 @@ tools if prompted. Then ask, in that session:
 
 ```text
 Please use NeatContext mcp server to analyze incident https://localhost:7801/incidents/INC-1001.
+What should we check first, and what's the safe action?
 ```
 
 **What you should see.** The AI reads the Payments profile, calls the demo tools
