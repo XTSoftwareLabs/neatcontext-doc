@@ -87,8 +87,9 @@ demo README's *Customizing* section).
 ## Step 3 — Add and enable the extension
 
 1. Open the **Extensions** page.
-2. Click **Add** and select the demo's **`extension/`** folder (the one containing
-   `neatcontext-extension.json`). NeatContext installs it as **Ops Demo Systems**.
+2. Click **Install from folder** and select the demo's **`extension/opsdemosystems`**
+   folder (the one containing `neatcontext-extension.json`). NeatContext installs it
+   as **Ops Demo Systems**.
 3. Make sure it's **enabled**. There is nothing to authenticate — it talks straight
    to the local mock systems.
 

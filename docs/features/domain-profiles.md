@@ -44,14 +44,16 @@ untouched — that's what lets one Context be "Payments" and another "Infra".
 
 ## Edit a profile
 
-Open a profile in the editor (from the Library) to change it:
+In **Library → Domain profiles**, click **Edit** on a profile's card to open the
+editor:
 
 ![The domain profile editor: metadata on top, raw Markdown below](/img/features/profile-editor.png)
 
 - **Name** and **Markdown file path** at the top.
 - The **raw Markdown** below — what you see is exactly what the client reads.
 - **Save** writes to the profile's file; **Duplicate** copies it as a starting
-  point for a similar team; **Delete** removes it (with confirmation).
+  point for a similar team. To delete a profile, use **Remove** on its Library
+  card.
 
 ## Anatomy of a good profile
 

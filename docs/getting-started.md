@@ -112,8 +112,8 @@ logs, list deployments. Open **Extensions**:
 
 - The bundled **PagerDuty** and **Datadog** connectors are ready to
   [connect](./features/using-extensions.md#connect-an-extension).
-- **Add** installs an extension from a folder; **Create** builds a read-only
-  connector for any JSON HTTP API without writing code.
+- **Install from folder** installs an extension from a folder; **Create** builds a
+  read-only connector for any JSON HTTP API without writing code.
 
 Enable an extension, then select it into your Context. The
 [incident demo](./guides/incident-analysis.md) ships a complete extension plus
